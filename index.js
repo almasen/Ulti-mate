@@ -22,15 +22,15 @@ const suites = [
         symbol: '♦',
     }, 
     {
-        name: 'Acorns',
-        letter: 'A',
-        symbol: '♣',
-    }, 
-    {
         name: 'Leaves',
         letter: 'L',
         symbol: '♠',
     },
+    {
+        name: 'Acorns',
+        letter: 'A',
+        symbol: '♣',
+    }, 
 ]
 
 const cardPack = [];
