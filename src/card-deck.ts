@@ -8,9 +8,9 @@ const shuffle = (deck: Card[]) => {
     }
 };
 
-const calculatePossibleHands = (deck: any[]) => {
+const calculatePossibleHands = (deck: Card[]): Card[][] => {
     const allSubsets = getAllSubsets(deck);
-    const possibleHands: any[][] = [];
+    const possibleHands: Card[][] = [];
     allSubsets.forEach((subset: any[]) => {
         if (subset.length === 10) {
             possibleHands.push(subset);

@@ -14,6 +14,7 @@ console.log('Step 1) Getting all subsets...');
 const possibleOpponentHands = calculatePossibleHands(possibleOpponentCards);
 console.log('Step 1) Getting all subsets...');
 console.log(possibleOpponentHands.length);
+console.log(possibleOpponentHands[0]);
 
 
 // let handHeuristic = 0;
