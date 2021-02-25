@@ -1,14 +1,10 @@
-// const shuffleArray = (array) => {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//     }
-// };
+/**
+ * Get all possible subsets of an array.
+ * Courtesy of MennyMez @ StackOverflow.
+ * @param array
+ */
+const getAllSubsets = (array: any[]) => {
+    return array.reduce((subsets, value) => subsets.concat(subsets.map((set: any) => [value, ...set])), [[]]);
+};
 
-// const getAllSubsets = (array) => {
-//     return array.reduce((subsets, value) => subsets.concat(subsets.map((set) => [value, ...set])), [
-//         [],
-//     ]);
-// };
-
-// export { shuffleArray, getAllSubsets };
+export { getAllSubsets };

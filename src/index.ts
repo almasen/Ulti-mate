@@ -3,32 +3,14 @@ import { randomBytes } from 'crypto';
 import { SUITS, RANKS, DECK, DEFAULT_DECK, CARD_MAP } from './globals';
 
 const args = process.argv.slice(2);
-console.log(DECK);
 
-// console.time('total');
+const hand = DECK.slice(0, 10);
+const handMap = new Map();
 
-// shuffleArray(cardPack);
+const possibleOpponentCards = DECK.slice(10);
 
-// // console.log(cards)
-// // console.log(cardPack.length + '\n\n')
-
-// const hand = cardPack.slice(0, 10);
-// const handMap = new Map();
-
-// const possibleOpponentCards = cardPack.slice(10);
-
-// // const opponentHandS = [];
-// // const opponentHandL = [];
-
-// // for (let i = 0; i < cardPack.length; i++) {
-// //     if (i < 10) {
-// //         hand.push(cardPack[i]);
-// //     } else if (i < 20) {
-// //         opponentHandS.push(cardPack[i])
-// //     } else {
-// //         opponentHandL.push(cardPack[i])
-// //     }
-// // }
+console.log(hand);
+console.log(possibleOpponentCards);
 
 // let handHeuristic = 0;
 

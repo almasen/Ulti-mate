@@ -9,7 +9,7 @@ const freezeMap = (map: Map<any, any>) => {
         };
 
         map.clear = () => {
-            throw new Error('Can\'t clear map, map is frozen');
+            throw new Error("Can't clear map, map is frozen");
         };
     }
 

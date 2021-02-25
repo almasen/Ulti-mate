@@ -4,7 +4,7 @@ import { Card } from './classes/Card';
 import { buildCardDeck } from './deck-builder';
 import { freezeMap } from './freezer';
 import { shuffle } from './card-deck';
-import {cloneDeep} from 'lodash';
+import { cloneDeep } from 'lodash';
 
 const SUITS: Suit[] = [
     {
