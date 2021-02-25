@@ -10,6 +10,14 @@ class Card {
         this.suit = suit;
         this.rank = rank;
     }
+
+    toString(): string {
+        return `${this.suit.letter}-${this.rank.letter}`;
+    }
+
+    getFullName(): string {
+        return `${this.rank.name} of ${this.suit.name}`;
+    }
 }
 
 export { Card };

@@ -30,14 +30,14 @@ const SUITS: Suit[] = [
 ];
 
 const RANKS: CardRank[] = [
-    { rank: 'A' },
-    { rank: 'K' },
-    { rank: 'O' },
-    { rank: 'U' },
-    { rank: 'X' },
-    { rank: 'IX' },
-    { rank: 'VIII' },
-    { rank: 'VII' },
+    { name: 'Ace', letter: 'A' },
+    { name: 'King', letter: 'K' },
+    { name: 'Over', letter: 'O' },
+    { name: 'Unter', letter: 'U' },
+    { name: 'Ten', letter: 'X' },
+    { name: 'Nine', letter: 'IX' },
+    { name: 'Eight', letter: 'VIII' },
+    { name: 'Seven', letter: 'VII' },
 ];
 
 const DECK: Card[] = [];

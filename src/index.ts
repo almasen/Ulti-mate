@@ -9,7 +9,9 @@ const handMap = new Map();
 
 const possibleOpponentCards = DECK.slice(10);
 
+console.log('myhand');
 console.log(hand);
+console.log('opponent cards');
 console.log(possibleOpponentCards);
 
 // let handHeuristic = 0;

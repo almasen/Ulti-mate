@@ -1,7 +1,9 @@
 class CardRank {
-    rank: string;
-    constructor(rank: string) {
-        this.rank = rank;
+    name: string;
+    letter: string;
+    constructor(name: string, letter: string) {
+        this.name = name;
+        this.letter = letter;
     }
 }
 
