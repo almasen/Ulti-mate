@@ -13,9 +13,12 @@
         "lint": "tslint -p tsconfig.json --fix",
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\""
     },
-    "dependencies": {},
+    "dependencies": {
+        "lodash": "^4.17.21"
+    },
     "devDependencies": {
         "@types/jest": "^22.2.3",
+        "@types/lodash": "^4.14.168",
         "@types/node": "^14.14.31",
         "codecov": "^3.1.0",
         "jest": "^26.6.3",

@@ -1,7 +1,6 @@
 /* tslint:disable:no-console */
 import { randomBytes } from 'crypto';
-import { SUITS, RANKS, DECK, CARDMAP } from './globals';
-import { shuffleArray, getAllSubsets } from './util';
+import { SUITS, RANKS, DECK, DEFAULT_DECK, CARD_MAP } from './globals';
 
 const args = process.argv.slice(2);
 console.log(DECK);
