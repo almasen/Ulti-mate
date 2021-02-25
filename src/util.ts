@@ -3,18 +3,10 @@ const shuffleArray = (array) => {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-}
+};
 
 const getAllSubsets = (array) => {
-    return array.reduce(
-        (subsets, value) => subsets.concat(
-            subsets.map(set => [value, ...set])
-        ),
-        [[]]
-    );
-}
+    return array.reduce((subsets, value) => subsets.concat(subsets.map((set) => [value, ...set])), [[]]);
+};
 
-module.exports = {
-    shuffleArray,
-    getAllSubsets,
-}
+export { shuffleArray, getAllSubsets };
