@@ -1,5 +1,6 @@
 /* tslint:disable:no-console */
 import { randomBytes } from 'crypto';
+import { calculatePossibleHands } from './card-deck';
 import { SUITS, RANKS, DECK, DEFAULT_DECK, CARD_MAP } from './globals';
 
 const args = process.argv.slice(2);
@@ -9,10 +10,11 @@ const handMap = new Map();
 
 const possibleOpponentCards = DECK.slice(10);
 
-console.log('myhand');
-console.log(hand);
-console.log('opponent cards');
-console.log(possibleOpponentCards);
+console.log('Step 1) Getting all subsets...');
+const possibleOpponentHands = calculatePossibleHands(possibleOpponentCards);
+console.log('Step 1) Getting all subsets...');
+console.log(possibleOpponentHands.length);
+
 
 // let handHeuristic = 0;
 
