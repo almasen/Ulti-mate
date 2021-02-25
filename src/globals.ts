@@ -1,5 +1,8 @@
 import { Suit } from './classes/Suit';
 import { CardRank } from './classes/CardRank';
+import { Card } from './classes/Card';
+import { buildCardDeck } from './deckbuilder';
+import { freezeMap } from './freezer';
 
 const SUITS: Suit[] = [
     {
@@ -35,4 +38,15 @@ const RANKS: CardRank[] = [
     { rank: 'VII' },
 ];
 
-export { SUITS, RANKS };
+const DECK: Card[] = [];
+
+const CARDMAP: Map<number, Card> = new Map();
+
+buildCardDeck(SUITS, RANKS, DECK, CARDMAP);
+
+Object.freeze(SUITS);
+Object.freeze(RANKS);
+Object.freeze(DECK);
+freezeMap(CARDMAP);
+
+export { SUITS, RANKS, DECK, CARDMAP };

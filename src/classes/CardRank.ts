@@ -1,6 +1,6 @@
 class CardRank {
     rank: string;
-    constructor(rank) {
+    constructor(rank: string) {
         this.rank = rank;
     }
 }
