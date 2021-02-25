@@ -1,36 +1,12 @@
 /* tslint:disable:no-console */
 import { randomBytes } from 'crypto';
-
+import { SUITS, RANKS } from './globals';
 import { shuffleArray, getAllSubsets } from './util';
 
 const args = process.argv.slice(2);
 console.log(args);
 
 console.time('total');
-
-const types = ['A', 'K', 'O', 'U', 'X', 'IX', 'VIII', 'VII'];
-const suites = [
-    {
-        name: 'Hearts',
-        letter: 'H',
-        symbol: '♥',
-    },
-    {
-        name: 'Bells',
-        letter: 'B',
-        symbol: '♦',
-    },
-    {
-        name: 'Leaves',
-        letter: 'L',
-        symbol: '♠',
-    },
-    {
-        name: 'Acorns',
-        letter: 'A',
-        symbol: '♣',
-    },
-];
 
 const cardPack = [];
 const cards = new Map();
@@ -39,8 +15,8 @@ const cards = new Map();
 
 let counter = 0;
 
-suites.forEach((suit) => {
-    types.forEach((type) => {
+suites.forEach(suit => {
+    types.forEach(type => {
         const card = {
             suit: suit.name,
             type,
@@ -79,7 +55,7 @@ const possibleOpponentCards = cardPack.slice(10);
 
 let handHeuristic = 0;
 
-hand.forEach((card) => {
+hand.forEach(card => {
     handHeuristic += card.id;
     handMap.set(card.id, card);
 });
@@ -113,7 +89,7 @@ console.log('Step 2) Sorting out subsets of valid length (10) for a hand');
 
 console.time('sortingHands');
 const possibleHands = [];
-subsets.forEach((e) => {
+subsets.forEach(e => {
     if (e.length === 10) {
         possibleHands.push(e);
     }
@@ -139,9 +115,9 @@ const possibleHeuristics = new Map();
 // const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 // bar1.start(possibleHands.length, 0);
 console.time('possibleHeurs');
-possibleHands.forEach((e) => {
+possibleHands.forEach(e => {
     let handHeur = 0;
-    e.forEach((card) => {
+    e.forEach(card => {
         handHeur += card.id;
     });
     if (possibleHeuristics.has(handHeur)) {
@@ -184,7 +160,9 @@ console.timeEnd('total');
 console.log(`\n======= Overall =======`);
 console.log('hand heuristic: ' + handHeuristic);
 console.log('opponent expected heur: ' + expectedHeur);
-console.log(`hand heur is ${handHeuristic > expectedHeur ? 'GREATER' : 'LOWER'} than exp. opponent heur\n`);
+console.log(
+    `hand heur is ${handHeuristic > expectedHeur ? 'GREATER' : 'LOWER'} than exp. opponent heur\n`,
+);
 console.log('opp best case heur: ' + opponentWorstCaseHeuristic);
 
 // console.log(possibleHands)con
@@ -207,8 +185,10 @@ keys.sort((a, b) => a - b);
 console.log('\n\n');
 // console.log(highestCount);
 
-keys.forEach((k) => {
+keys.forEach(k => {
     const relative = Math.round((possibleHeuristics.get(k) / highestCount) * 100);
-    k < 100 ? console.log(`${k}  ` + 'o'.repeat(relative)) : console.log(`${k} ` + 'o'.repeat(relative));
+    k < 100
+        ? console.log(`${k}  ` + 'o'.repeat(relative))
+        : console.log(`${k} ` + 'o'.repeat(relative));
 });
 // console.log(possibleHeuristics)
