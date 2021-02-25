@@ -1,21 +1,23 @@
 /* tslint:disable:no-console */
 import { randomBytes } from 'crypto';
-import { calculatePossibleHands } from './card-deck';
+import { calculateAndSortPossibleHands } from './card-deck';
 import { SUITS, RANKS, DECK, DEFAULT_DECK, CARD_MAP } from './globals';
+import { sortHand } from './hand';
+import { calculateExpectedValue } from './mini-games/durchmarsch';
 
 const args = process.argv.slice(2);
+const MAX_RISK = args[0] ? parseInt(args[0], 10) : 80;
 
-const hand = DECK.slice(0, 10);
-const handMap = new Map();
-
+const hand = sortHand(DECK.slice(0, 10));
+// const handMap = new Map(); ??
 const possibleOpponentCards = DECK.slice(10);
+const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
 
-console.log('Step 1) Getting all subsets...');
-const possibleOpponentHands = calculatePossibleHands(possibleOpponentCards);
-console.log('Step 1) Getting all subsets...');
+// const durchmarschChance = calculateExpectedValue(hand);
+
 console.log(possibleOpponentHands.length);
 console.log(possibleOpponentHands[0]);
-
+// console.log(hand[0]);
 
 // let handHeuristic = 0;
 

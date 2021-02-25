@@ -1,4 +1,6 @@
 import { Card } from './classes/Card';
+import { Hand } from './classes/Hand';
+import { sortHand } from './hand';
 import { getAllSubsets } from './util';
 
 const shuffle = (deck: Card[]) => {
@@ -8,7 +10,7 @@ const shuffle = (deck: Card[]) => {
     }
 };
 
-const calculatePossibleHands = (deck: Card[]): Card[][] => {
+const calculateAndSortPossibleHands = (deck: Card[]): Card[][] => {
     const allSubsets = getAllSubsets(deck);
     const possibleHands: Card[][] = [];
     allSubsets.forEach((subset: any[]) => {
@@ -17,6 +19,6 @@ const calculatePossibleHands = (deck: Card[]): Card[][] => {
         }
     });
     return possibleHands;
-}
+};
 
-export { shuffle, calculatePossibleHands };
+export { shuffle, calculateAndSortPossibleHands };
