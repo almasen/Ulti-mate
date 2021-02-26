@@ -1,12 +1,12 @@
 // @ts-nocheck
 import { Hand } from '../classes/Hand';
 import { DECK, CARD_MAP } from '../globals';
-import {calculateExpectedValue} from '../mini-games/durchmarsch';
+import { calculateExpectedValue } from '../mini-games/durchmarsch';
 
 declare global {
     var MAX_RISK: number;
 }
-globalThis.MAX_RISK = 0.50;
+globalThis.MAX_RISK = 0.5;
 
 test('durchmarsch ♥ A K O U X IX VIII VII ♦ A K', () => {
     const hand = new Hand();
@@ -89,7 +89,7 @@ test('durchmarsch ♥ A O U X IX VIII ♦ A K O U', () => {
     hand.addCard(CARD_MAP.get(10));
     hand.addCard(CARD_MAP.get(11));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(1/2 * 6);
+    expect(expectedValue).toBe((1 / 2) * 6);
 });
 
 test('durchmarsch ♥ A O X IX VIII VII ♦ A K O U', () => {
@@ -105,13 +105,13 @@ test('durchmarsch ♥ A O X IX VIII VII ♦ A K O U', () => {
     hand.addCard(CARD_MAP.get(10));
     hand.addCard(CARD_MAP.get(11));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(1/2 * 6);
+    expect(expectedValue).toBe((1 / 2) * 6);
 });
 
 test('durchmarsch ♥ A K IX VIII VII ♦ A K O U X', () => {
     const hand = new Hand();
     for (let i = 0; i < 8; i++) {
-        if (i == 2 || i == 3 || i ==  4) {
+        if (i == 2 || i == 3 || i == 4) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -122,13 +122,13 @@ test('durchmarsch ♥ A K IX VIII VII ♦ A K O U X', () => {
     hand.addCard(CARD_MAP.get(11));
     hand.addCard(CARD_MAP.get(12));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(3/4 * 6);
+    expect(expectedValue).toBe((3 / 4) * 6);
 });
 
 test('durchmarsch ♥ A K IX VIII VII ♦ A K U X IX', () => {
     const hand = new Hand();
     for (let i = 0; i < 8; i++) {
-        if (i == 2 || i == 3 || i ==  4) {
+        if (i == 2 || i == 3 || i == 4) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -139,7 +139,7 @@ test('durchmarsch ♥ A K IX VIII VII ♦ A K U X IX', () => {
     hand.addCard(CARD_MAP.get(12));
     hand.addCard(CARD_MAP.get(13));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(3/4 * 3/4 * 6);
+    expect(expectedValue).toBe((((3 / 4) * 3) / 4) * 6);
 });
 
 test('durchmarsch ♥ A K X IX VIII VII ♦ A K U X', () => {
@@ -254,7 +254,7 @@ test('durchmarsch ♥ A K O X ♦ A K O U X IX', () => {
     hand.addCard(CARD_MAP.get(12));
     hand.addCard(CARD_MAP.get(13));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(7/8 * 6);
+    expect(expectedValue).toBe((7 / 8) * 6);
 });
 
 test('durchmarsch ♥ A K O X ♦ A K U X IX ♣ A', () => {
@@ -272,7 +272,7 @@ test('durchmarsch ♥ A K O X ♦ A K U X IX ♣ A', () => {
     hand.addCard(CARD_MAP.get(13));
     hand.addCard(CARD_MAP.get(24));
     const expectedValue = calculateExpectedValue(hand);
-    expect(expectedValue).toBe(7/8 * 3/4 * 6);
+    expect(expectedValue).toBe((((7 / 8) * 3) / 4) * 6);
 });
 
 test('durchmarsch ♥ A K O ♦ A K O U X IX ♣ A', () => {
@@ -290,7 +290,7 @@ test('durchmarsch ♥ A K O ♦ A K O U X IX ♣ A', () => {
     hand.addCard(CARD_MAP.get(12));
     hand.addCard(CARD_MAP.get(13));
     hand.addCard(CARD_MAP.get(24));
-    console.log(hand.printWholeHand());
+    //console.log(hand.printWholeHand());
     const expectedValue = calculateExpectedValue(hand);
     expect(expectedValue).toBe(6);
 });

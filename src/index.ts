@@ -4,12 +4,13 @@ import { calculateAndSortPossibleHands } from './card-deck';
 import { DECK, CARD_MAP } from './globals';
 import { sortHand } from './hand';
 import { calculateExpectedValue } from './mini-games/durchmarsch';
+import chalk from 'chalk';
 
 declare global {
     var MAX_RISK: number;
 }
 const args = process.argv.slice(2);
-globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10)/100 : 0.80;
+globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.8;
 
 const hand = sortHand(DECK.slice(0, 10));
 // const handMap = new Map(); ??
@@ -18,8 +19,8 @@ const possibleOpponentCards = DECK.slice(10);
 
 const durchmarschChance = calculateExpectedValue(hand);
 
-console.log(hand);
-console.log(durchmarschChance);
+console.log(hand.printWholeHand());
+console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
 // console.log(possibleOpponentHands[0]);
 // console.log(hand[0]);
 

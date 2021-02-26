@@ -10,19 +10,19 @@ const meetsPrerequisites = (hand: Hand): boolean => {
 
 const checkHoles = (suit: Card[]): number => {
     // console.log(suit);
-    if (suit[0].rank.letter !== "A") {
+    if (suit[0].rank.letter !== 'A') {
         return 0;
     } else if (suit.length === 1) {
         return 1;
     }
 
-    if (suit[1].rank.letter !== "K") {
+    if (suit[1].rank.letter !== 'K') {
         switch (suit.length) {
             case 7:
                 return 1;
 
             case 6:
-                return 1/2;
+                return 1 / 2;
 
             default:
                 return 0; // other chances are too low
@@ -31,14 +31,14 @@ const checkHoles = (suit: Card[]): number => {
         return 1;
     }
 
-    if (suit[2].rank.letter !== "O") {
+    if (suit[2].rank.letter !== 'O') {
         switch (suit.length) {
             case 7:
             case 6:
                 return 1;
 
             case 5:
-                return 3/4;
+                return 3 / 4;
 
             default:
                 return 0;
@@ -47,7 +47,7 @@ const checkHoles = (suit: Card[]): number => {
         return 1;
     }
 
-    if (suit[3].rank.letter !== "U") {
+    if (suit[3].rank.letter !== 'U') {
         switch (suit.length) {
             case 7:
             case 6:
@@ -55,17 +55,17 @@ const checkHoles = (suit: Card[]): number => {
                 return 1;
 
             case 4:
-                return 7/8;
+                return 7 / 8;
 
             default:
-                throw new Error("Internal error");
+                throw new Error('Internal error');
         }
     } else {
         return 1;
     }
-}
+};
 
-const calculateExpectedValue = (hand: Hand):number => {
+const calculateExpectedValue = (hand: Hand): number => {
     if (hand.length !== 10) {
         throw new Error(`Invalid hand length ${hand.length}`);
     }

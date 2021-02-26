@@ -9,11 +9,13 @@
     ],
     "scripts": {
         "build": "tsc",
+        "start": "node ./lib/index.js",
         "test": "jest",
         "lint": "tslint -p tsconfig.json --fix",
         "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\""
     },
     "dependencies": {
+        "chalk": "^4.1.0",
         "lodash": "^4.17.21"
     },
     "devDependencies": {

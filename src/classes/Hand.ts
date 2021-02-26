@@ -80,30 +80,30 @@ class Hand extends Array {
     }
 
     printWholeHand(): string {
-        let printString = "";
+        let printString = '';
         if (this.hearts.length > 0) {
-            printString += this.hearts[0].suit.symbol + " ";
-            this.hearts.forEach(e => {
-                printString += e.rank.letter + " ";
-            })
+            printString += this.hearts[0].suit.symbol + ' ';
+            this.hearts.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
         }
         if (this.bells.length > 0) {
-            printString += this.bells[0].suit.symbol + " ";
-            this.bells.forEach(e => {
-                printString += e.rank.letter + " ";
-            })
+            printString += this.bells[0].suit.symbol + ' ';
+            this.bells.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
         }
         if (this.leaves.length > 0) {
-            printString += this.leaves[0].suit.symbol + " ";
-            this.leaves.forEach(e => {
-                printString += e.rank.letter + " ";
-            })
+            printString += this.leaves[0].suit.symbol + ' ';
+            this.leaves.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
         }
         if (this.acorns.length > 0) {
-            printString += this.acorns[0].suit.symbol + " ";
-            this.acorns.forEach(e => {
-                printString += e.rank.letter + " ";
-            })
+            printString += this.acorns[0].suit.symbol + ' ';
+            this.acorns.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
         }
         return printString;
     }
