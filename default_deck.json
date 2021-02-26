@@ -1,0 +1,386 @@
+{
+    "0": {
+        "id": 0,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Ace",
+            "letter": "A"
+        }
+    },
+    "1": {
+        "id": 1,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "King",
+            "letter": "K"
+        }
+    },
+    "2": {
+        "id": 2,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Over",
+            "letter": "O"
+        }
+    },
+    "3": {
+        "id": 3,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Unter",
+            "letter": "U"
+        }
+    },
+    "4": {
+        "id": 4,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Ten",
+            "letter": "X"
+        }
+    },
+    "5": {
+        "id": 5,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Nine",
+            "letter": "IX"
+        }
+    },
+    "6": {
+        "id": 6,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Eight",
+            "letter": "VIII"
+        }
+    },
+    "7": {
+        "id": 7,
+        "suit": {
+            "name": "Hearts",
+            "letter": "H",
+            "symbol": "♥"
+        },
+        "rank": {
+            "name": "Seven",
+            "letter": "VII"
+        }
+    },
+    "8": {
+        "id": 8,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Ace",
+            "letter": "A"
+        }
+    },
+    "9": {
+        "id": 9,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "King",
+            "letter": "K"
+        }
+    },
+    "10": {
+        "id": 10,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Over",
+            "letter": "O"
+        }
+    },
+    "11": {
+        "id": 11,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Unter",
+            "letter": "U"
+        }
+    },
+    "12": {
+        "id": 12,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Ten",
+            "letter": "X"
+        }
+    },
+    "13": {
+        "id": 13,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Nine",
+            "letter": "IX"
+        }
+    },
+    "14": {
+        "id": 14,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Eight",
+            "letter": "VIII"
+        }
+    },
+    "15": {
+        "id": 15,
+        "suit": {
+            "name": "Bells",
+            "letter": "B",
+            "symbol": "♦"
+        },
+        "rank": {
+            "name": "Seven",
+            "letter": "VII"
+        }
+    },
+    "16": {
+        "id": 16,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Ace",
+            "letter": "A"
+        }
+    },
+    "17": {
+        "id": 17,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "King",
+            "letter": "K"
+        }
+    },
+    "18": {
+        "id": 18,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Over",
+            "letter": "O"
+        }
+    },
+    "19": {
+        "id": 19,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Unter",
+            "letter": "U"
+        }
+    },
+    "20": {
+        "id": 20,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Ten",
+            "letter": "X"
+        }
+    },
+    "21": {
+        "id": 21,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Nine",
+            "letter": "IX"
+        }
+    },
+    "22": {
+        "id": 22,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Eight",
+            "letter": "VIII"
+        }
+    },
+    "23": {
+        "id": 23,
+        "suit": {
+            "name": "Leaves",
+            "letter": "L",
+            "symbol": "♠"
+        },
+        "rank": {
+            "name": "Seven",
+            "letter": "VII"
+        }
+    },
+    "24": {
+        "id": 24,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Ace",
+            "letter": "A"
+        }
+    },
+    "25": {
+        "id": 25,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "King",
+            "letter": "K"
+        }
+    },
+    "26": {
+        "id": 26,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Over",
+            "letter": "O"
+        }
+    },
+    "27": {
+        "id": 27,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Unter",
+            "letter": "U"
+        }
+    },
+    "28": {
+        "id": 28,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Ten",
+            "letter": "X"
+        }
+    },
+    "29": {
+        "id": 29,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Nine",
+            "letter": "IX"
+        }
+    },
+    "30": {
+        "id": 30,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Eight",
+            "letter": "VIII"
+        }
+    },
+    "31": {
+        "id": 31,
+        "suit": {
+            "name": "Acorns",
+            "letter": "A",
+            "symbol": "♣"
+        },
+        "rank": {
+            "name": "Seven",
+            "letter": "VII"
+        }
+    }
+}
