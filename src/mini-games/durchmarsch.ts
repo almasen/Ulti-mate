@@ -58,7 +58,7 @@ const checkHoles = (suit: Card[]): number => {
                 return 7/8;
 
             default:
-                return 0;
+                throw new Error("Internal error");
         }
     } else {
         return 1;
