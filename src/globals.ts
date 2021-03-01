@@ -1,9 +1,9 @@
 import { Suit } from './classes/Suit';
 import { CardRank } from './classes/CardRank';
 import { Card } from './classes/Card';
-import { buildCardDeck } from './deck-builder';
-import { freezeMap } from './freezer';
-import { shuffle } from './card-deck';
+import { buildCardDeck } from './util/deck-builder';
+import { freezeMap } from './util/freezer';
+import { shuffle } from './util/card-deck';
 import { cloneDeep } from 'lodash';
 
 const SUITS: Suit[] = [

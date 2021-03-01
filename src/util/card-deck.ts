@@ -1,7 +1,7 @@
-import { Card } from './classes/Card';
-import { Hand } from './classes/Hand';
+import { Card } from '../classes/Card';
+import { Hand } from '../classes/Hand';
 import { sortHand } from './hand';
-import { getAllSubsets } from './util';
+import { getAllSubsets } from './subset';
 
 const shuffle = (deck: Card[]) => {
     for (let i = deck.length - 1; i > 0; i--) {

@@ -1,8 +1,8 @@
 /* tslint:disable:no-console */
 // import { randomBytes } from 'crypto';
-import { calculateAndSortPossibleHands } from './card-deck';
+import { calculateAndSortPossibleHands } from './util/card-deck';
 import { DECK, CARD_MAP } from './globals';
-import { sortHand } from './hand';
+import { sortHand } from './util/hand';
 import { calculateExpectedValue } from './mini-games/durchmarsch';
 import chalk from 'chalk';
 
