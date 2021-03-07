@@ -1,5 +1,4 @@
 /* tslint:disable:no-console */
-// import { randomBytes } from 'crypto';
 import chalk from 'chalk';
 import { getHand, getPossibleOpponentCards } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
