@@ -9,6 +9,10 @@ const meetsPrerequisites = (hand: Hand): boolean => {
 };
 
 const checkHoles = (suit: Card[]): number => {
+    if (suit.length === 0) {
+        return 1;
+    }
+
     if (suit[0].rank.letter !== 'A') {
         return 0;
     } else if (suit.length === 1) {
@@ -72,24 +76,17 @@ const calculateChance = (hand: Hand): number => {
         return 0;
     }
     let chance = 1;
-    if (hand.hearts.length > 0) {
-        chance *= checkHoles(hand.hearts);
-    }
-    // if chance <= MAX_RISK then it can not increase, hence we don't continue
-    if (chance > MAX_RISK && hand.bells.length > 0) {
-        chance *= checkHoles(hand.bells);
-    }
-    if (chance > MAX_RISK && hand.leaves.length > 0) {
-        chance *= checkHoles(hand.leaves);
-    }
-    if (chance > MAX_RISK && hand.acorns.length > 0) {
-        chance *= checkHoles(hand.acorns);
-    }
+
+    chance *= checkHoles(hand.hearts);
+    chance *= checkHoles(hand.bells);
+    chance *= checkHoles(hand.leaves);
+    chance *= checkHoles(hand.acorns);
+
     return chance >= MAX_RISK ? chance : 0;
 };
 
 const calculateExpectedValue = (hand: Hand): number => {
     return calculateChance(hand) * TOTAL_VALUE;
-}
+};
 
 export { calculateChance, calculateExpectedValue };
