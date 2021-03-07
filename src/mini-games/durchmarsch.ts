@@ -85,7 +85,7 @@ const calculateChance = (hand: Hand): number => {
     if (chance > MAX_RISK && hand.acorns.length > 0) {
         chance *= checkHoles(hand.acorns);
     }
-    return chance;
+    return chance >= MAX_RISK ? chance : 0;
 };
 
 const calculateExpectedValue = (hand: Hand): number => {

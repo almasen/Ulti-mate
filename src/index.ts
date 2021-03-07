@@ -12,6 +12,7 @@ declare global {
 }
 const args = process.argv.slice(2);
 globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.8;
+console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`)
 
 const hand = sortHand(DECK.slice(0, 10));
 // const handMap = new Map(); ??
