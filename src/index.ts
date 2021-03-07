@@ -3,8 +3,9 @@
 import { calculateAndSortPossibleHands } from './util/card-deck';
 import { DECK, CARD_MAP } from './globals';
 import { sortHand } from './util/hand';
-import { calculateExpectedValue } from './mini-games/durchmarsch';
+import { calculateChance } from './mini-games/durchmarsch';
 import chalk from 'chalk';
+import { Card } from './classes/Card';
 
 declare global {
     var MAX_RISK: number;
@@ -15,135 +16,38 @@ globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.8;
 const hand = sortHand(DECK.slice(0, 10));
 // const handMap = new Map(); ??
 const possibleOpponentCards = DECK.slice(10);
-// const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
 
-const durchmarschChance = calculateExpectedValue(hand);
+const durchmarschChance = calculateChance(hand);
 
 console.log(hand.printWholeHand());
 console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
-// console.log(possibleOpponentHands[0]);
-// console.log(hand[0]);
 
-// let handHeuristic = 0;
+console.log("Calculating opponent hands..");
 
-// hand.forEach(card => {
-//     handHeuristic += card.id;
-//     handMap.set(card.id, card);
-// });
+console.time("calcSortPossibleHand");
+const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
+console.timeEnd("calcSortPossibleHand");
 
-// let opponentWorstCaseHeuristic = 0;
+let opponentDurchmarschChances = 0;
 
-// console.log('hand');
-// console.log(handMap);
-// console.log('\n');
-
-// let topCount = 0;
-// for (let h = 31; topCount < 10; h--) {
-//     if (!handMap.has(h)) {
-//         // console.log(`hand map doesn't have ${h}`)
-//         opponentWorstCaseHeuristic += h;
-//         ++topCount;
-//     }
-// }
-
-// console.log('hand heur: ' + handHeuristic);
-// console.log('opp worst case heur: ' + opponentWorstCaseHeuristic);
-// console.log('\n\nStarting simulation...\n');
-
-// console.log('Step 1) Getting all subsets...');
-// console.time('gettingSubsets');
-// const subsets = getAllSubsets(possibleOpponentCards);
-// console.timeEnd('gettingSubsets');
-// console.log(`Found ${subsets.length} subsets. Done.\n`);
-
-// console.log('Step 2) Sorting out subsets of valid length (10) for a hand');
-
-// console.time('sortingHands');
-// const possibleHands = [];
-// subsets.forEach(e => {
-//     if (e.length === 10) {
-//         possibleHands.push(e);
-//     }
-// });
-// console.timeEnd('sortingHands');
-
-// console.log(`Found ${possibleHands.length} subsets of length 10.\n`);
-
-// console.log('Step 3) Validating count of possible hands');
-
-// if (646646 === possibleHands.length) {
-//     console.log(`Possible hands is indeed 22C10.\n`);
-// } else {
-//     console.err(`Possible hands is not 22C10.`);
-//     throw new Error('Possible hands is not 22C10');
-// }
-
-// console.log('Step 4) Calculating heuristic values of each possible hand...');
-
-// // let progress = 0;
 // const possibleHeuristics = new Map();
 
-// // const bar1 = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-// // bar1.start(possibleHands.length, 0);
-// console.time('possibleHeurs');
-// possibleHands.forEach(e => {
-//     let handHeur = 0;
-//     e.forEach(card => {
-//         handHeur += card.id;
-//     });
-//     if (possibleHeuristics.has(handHeur)) {
-//         possibleHeuristics.set(handHeur, possibleHeuristics.get(handHeur) + 1);
-//     } else {
-//         possibleHeuristics.set(handHeur, 1);
-//     }
+possibleOpponentHands.forEach((opponentHand: Card[]) => {
+    const sortedOpponentHand = sortHand(opponentHand);
+    const oppDurchmarschChance = calculateChance(sortedOpponentHand);
+    opponentDurchmarschChances += oppDurchmarschChance;
 
-//     // ++progress;
+    // if (possibleHeuristics.has(oppDurchmarschChance)) {
+    //     possibleHeuristics.set(oppDurchmarschChance, possibleHeuristics.get(oppDurchmarschChance) + 1);
+    // } else {
+    //     possibleHeuristics.set(oppDurchmarschChance, 1);
+    // }
+});
 
-//     // bar1.update(progress);
-// });
-
-// // bar1.stop();
-// console.timeEnd('possibleHeurs');
-// console.log('Calculating heuristic values is finished.\n');
-
-// // console.log(possibleHeuristics);
-
-// console.log('Step 5) Calculating expected heuristic value of an opponent hand.');
-
-// let expectedHeur = 0;
-// let totalHeur = 0;
-// let count = 0;
-
-// possibleHeuristics.forEach((value, key) => {
-//     count += value;
-//     totalHeur += key * value;
-// });
-
-// console.log(`Total heur is ${totalHeur}`);
-// console.log(`Total count is ${count}`);
-
-// expectedHeur = totalHeur / count;
-
-// console.log(`Expected heuristic value is: ${expectedHeur}\n`);
-
-// console.timeEnd('total');
-
-// console.log(`\n======= Overall =======`);
-// console.log('hand heuristic: ' + handHeuristic);
-// console.log('opponent expected heur: ' + expectedHeur);
-// console.log(
-//     `hand heur is ${handHeuristic > expectedHeur ? 'GREATER' : 'LOWER'} than exp. opponent heur\n`,
-// );
-// console.log('opp best case heur: ' + opponentWorstCaseHeuristic);
-
-// // console.log(possibleHands)con
-
-// if (!args.includes('--curve')) {
-//     return;
-// }
+console.log(`opponent durchmarsch chance is ${chalk.cyan(opponentDurchmarschChances / possibleOpponentHands.length * 100)}%`);
 
 // // graph bs
-// const keys = [];
+// const keys: number[] = [];
 // let highestCount = 0;
 // possibleHeuristics.forEach((value, key) => {
 //     keys.push(key);
@@ -162,4 +66,4 @@ console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
 //         ? console.log(`${k}  ` + 'o'.repeat(relative))
 //         : console.log(`${k} ` + 'o'.repeat(relative));
 // });
-// // console.log(possibleHeuristics)
+// console.log(possibleHeuristics)
