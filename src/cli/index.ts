@@ -49,6 +49,9 @@ if (options.customHand) {
         }
         customHand.push(parsedValue);
     });
+    customHand.sort((a, b) => {
+        return a - b;
+    });
     hand = new Hand();
     possibleOpponentCards = [];
     const cards = new Map(CARD_MAP);
