@@ -7,14 +7,11 @@ import { calculateChance } from './mini-games/durchmarsch';
 import { Card } from './classes/Card';
 import { Hand } from './classes/Hand';
 
-console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`);
-
 const hand: Hand = getHand();
 const possibleOpponentCards: Card[] = getPossibleOpponentCards();
 
 const durchmarschChance = calculateChance(hand);
 
-console.log(hand.printWholeHand());
 console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
 
 console.log('Calculating opponent hands..');

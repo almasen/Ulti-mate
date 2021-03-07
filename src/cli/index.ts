@@ -1,4 +1,5 @@
 /* tslint:disable:no-console */
+import chalk from 'chalk';
 import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 import { CARD_MAP, DECK } from '../globals';
@@ -14,8 +15,6 @@ program
 program.parse(process.argv);
 const options = program.opts();
 
-console.log(options);
-
 /* set global MAX_RISK variable */
 
 declare global {
@@ -27,6 +26,7 @@ declare global {
         throw new InvalidOptionArgumentError('Maximum risk must be an integer between 0 and 100.');
     }
     globalThis.MAX_RISK = parsedValue / 100;
+    console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`);
 }
 
 /* set up user and opponent hands according to params */
@@ -35,6 +35,7 @@ let hand: Hand;
 let possibleOpponentCards: Card[];
 
 if (options.customHand) {
+    console.log('Creating custom hand from input card IDs...');
     if (!Array.isArray(options.customHand) || options.customHand.length !== 10) {
         throw new InvalidOptionArgumentError('Custom hand must be a list of 10 integers between 0 and 31 (inclusive).');
     }
@@ -62,9 +63,11 @@ if (options.customHand) {
         possibleOpponentCards.push(value);
     });
 } else {
+    console.log('Shuffling deck and dealing cards randomly...');
     hand = sortHand(DECK.slice(0, 10));
     possibleOpponentCards = DECK.slice(10);
 }
+console.log("Hand: " + chalk.cyan(hand.printWholeHand()))
 
 const getHand = (): Hand => {
     return hand;
