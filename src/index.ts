@@ -1,43 +1,17 @@
 /* tslint:disable:no-console */
 // import { randomBytes } from 'crypto';
+import chalk from 'chalk';
+import { getHand, getPossibleOpponentCards } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
-import { DECK, CARD_MAP } from './globals';
 import { sortHand } from './util/hand';
 import { calculateChance } from './mini-games/durchmarsch';
-import chalk from 'chalk';
 import { Card } from './classes/Card';
 import { Hand } from './classes/Hand';
 
-declare global {
-    var MAX_RISK: number;
-}
-const args = process.argv.slice(2);
-globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.5;
 console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`);
 
-let hand: Hand;
-let possibleOpponentCards: Card[];
-
-if (args[1]) {
-    const customHand = args[1].trim().split(',');
-    hand = new Hand();
-    possibleOpponentCards = [];
-    const cards = new Map(CARD_MAP);
-    customHand.forEach((e) => {
-        const id = parseInt(e, 10);
-        const card = cards.get(id);
-        if (card) {
-            hand.addCard(card);
-        }
-        cards.delete(id);
-    });
-    cards.forEach((value, key) => {
-        possibleOpponentCards.push(value);
-    });
-} else {
-    hand = sortHand(DECK.slice(0, 10));
-    possibleOpponentCards = DECK.slice(10);
-}
+const hand: Hand = getHand();
+const possibleOpponentCards: Card[] = getPossibleOpponentCards();
 
 const durchmarschChance = calculateChance(hand);
 
