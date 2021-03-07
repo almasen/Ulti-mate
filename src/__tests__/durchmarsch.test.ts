@@ -8,6 +8,16 @@ declare global {
 }
 globalThis.MAX_RISK = 0.5;
 
+test('invalid hand length should throw an appropriate error', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 11; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    expect(() => {
+        calculateExpectedValue(hand);
+    }).toThrow(new Error('Invalid hand length 11'));
+});
+
 test('durchmarsch ♥ A K O U X IX VIII VII ♦ A K', () => {
     const hand = new Hand();
     for (let i = 0; i < 10; i++) {
@@ -290,7 +300,27 @@ test('durchmarsch ♥ A K O ♦ A K O U X IX ♣ A', () => {
     hand.addCard(CARD_MAP.get(12));
     hand.addCard(CARD_MAP.get(13));
     hand.addCard(CARD_MAP.get(24));
-    //console.log(hand.printWholeHand());
     const expectedValue = calculateExpectedValue(hand);
     expect(expectedValue).toBe(6);
+});
+
+test('durchmarsch ♠ A K O U X IX VIII VII ♣ A K', () => {
+    const hand = new Hand();
+    for (let i = 16; i < 26; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    const expectedValue = calculateExpectedValue(hand);
+    expect(expectedValue).toBe(6);
+});
+
+test('durchmarsch ♥ A K O ♦ A K O ♠ A K O ♣ A', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 25; i++) {
+        if (i % 8 === 0 || i % 8 === 1 || i % 8 === 2) {
+            hand.addCard(CARD_MAP.get(i));
+        }
+    }
+    const expectedValue = calculateExpectedValue(hand);
+    expect(expectedValue).toBe(6);
+    // console.log(hand.printWholeHand());
 });
