@@ -70,7 +70,7 @@ if (options.customHand) {
     hand = sortHand(DECK.slice(0, 10));
     possibleOpponentCards = DECK.slice(10);
 }
-console.log("Hand: " + chalk.cyan(hand.printWholeHand()))
+console.log('Hand: ' + chalk.cyan(hand.printWholeHand()));
 
 const getHand = (): Hand => {
     return hand;

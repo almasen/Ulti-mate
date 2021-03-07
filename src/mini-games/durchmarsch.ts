@@ -1,8 +1,8 @@
 import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 
-const TOTAL_VALUE = 6;
-const GAME_RANK = 7;
+const TOTAL_VALUE: number = 6;
+const GAME_RANK: number = 7;
 
 const meetsPrerequisites = (hand: Hand): boolean => {
     return hand.aces.length >= 2;
@@ -89,4 +89,8 @@ const calculateExpectedValue = (hand: Hand): number => {
     return calculateChance(hand) * TOTAL_VALUE;
 };
 
-export { calculateChance, calculateExpectedValue };
+const getRank = (): number => {
+    return GAME_RANK;
+};
+
+export { calculateChance, calculateExpectedValue, getRank };

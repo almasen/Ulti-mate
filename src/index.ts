@@ -3,16 +3,17 @@ import chalk from 'chalk';
 import { getHand, getPossibleOpponentCards } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
 import { sortHand } from './util/hand';
-import { calculateChance } from './mini-games/durchmarsch';
 import { Card } from './classes/Card';
 import { Hand } from './classes/Hand';
+import { calculateHandPotential } from './mini-games';
 
 const hand: Hand = getHand();
 const possibleOpponentCards: Card[] = getPossibleOpponentCards();
 
-const durchmarschChance = calculateChance(hand);
+const handPotential = calculateHandPotential(hand);
 
-console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
+console.log(`expected value of hand is ${chalk.cyan(handPotential.expectedValue)}`);
+console.log(`expected rank of hand is ${chalk.cyan(handPotential.bestMiniGame)}`);
 
 console.log('Calculating opponent hands..');
 
@@ -20,27 +21,26 @@ console.time('calcOpponentHands');
 const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
 console.timeEnd('calcOpponentHands');
 
-let opponentDurchmarschChances = 0;
+let opponentHandPotentials = 0;
+let greaterRankCount = 0;
 
 // const possibleHeuristics = new Map();
 console.time('calcOpponentChances');
 possibleOpponentHands.forEach((opponentHand: Card[]) => {
     const sortedOpponentHand = sortHand(opponentHand);
-    const oppDurchmarschChance = calculateChance(sortedOpponentHand);
-    opponentDurchmarschChances += oppDurchmarschChance;
-
-    // if (possibleHeuristics.has(oppDurchmarschChance)) {
-    //     possibleHeuristics.set(oppDurchmarschChance, possibleHeuristics.get(oppDurchmarschChance) + 1);
-    // } else {
-    //     possibleHeuristics.set(oppDurchmarschChance, 1);
-    // }
+    const opponentHandPotential = calculateHandPotential(sortedOpponentHand);
+    opponentHandPotentials += opponentHandPotential.expectedValue;
+    if (handPotential.bestMiniGame < opponentHandPotential.bestMiniGame) {
+        ++greaterRankCount;
+    }
 });
 console.timeEnd('calcOpponentChances');
 
-console.log(opponentDurchmarschChances);
+console.log(opponentHandPotentials);
 console.log(
-    `opponent durchmarsch chance is ${chalk.cyan((opponentDurchmarschChances / possibleOpponentHands.length) * 100)}%`,
+    `expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
 );
+console.log(`greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
 
 // // graph bs
 // const keys: number[] = [];
