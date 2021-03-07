@@ -64,7 +64,7 @@ const checkHoles = (suit: Card[]): number => {
     }
 };
 
-const calculateExpectedValue = (hand: Hand): number => {
+const calculateChance = (hand: Hand): number => {
     if (hand.length !== 10) {
         throw new Error(`Invalid hand length ${hand.length}`);
     }
@@ -85,7 +85,11 @@ const calculateExpectedValue = (hand: Hand): number => {
     if (chance > MAX_RISK && hand.acorns.length > 0) {
         chance *= checkHoles(hand.acorns);
     }
-    return chance * TOTAL_VALUE;
+    return chance;
 };
 
-export { calculateExpectedValue };
+const calculateExpectedValue = (hand: Hand): number => {
+    return calculateChance(hand) * TOTAL_VALUE;
+}
+
+export { calculateChance, calculateExpectedValue };
