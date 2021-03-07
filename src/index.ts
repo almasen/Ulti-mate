@@ -11,7 +11,7 @@ declare global {
     var MAX_RISK: number;
 }
 const args = process.argv.slice(2);
-globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.7;
+globalThis.MAX_RISK = args[0] ? parseInt(args[0], 10) / 100 : 0.5;
 console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`)
 
 const hand = sortHand(DECK.slice(0, 10));
@@ -25,14 +25,14 @@ console.log(`durchmarsch chance is ${chalk.cyan(durchmarschChance * 100)}%`);
 
 console.log("Calculating opponent hands..");
 
-console.time("calcSortPossibleHand");
+console.time("calcOpponentHands");
 const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
-console.timeEnd("calcSortPossibleHand");
+console.timeEnd("calcOpponentHands");
 
 let opponentDurchmarschChances = 0;
 
 // const possibleHeuristics = new Map();
-
+console.time("calcOpponentChances");
 possibleOpponentHands.forEach((opponentHand: Card[]) => {
     const sortedOpponentHand = sortHand(opponentHand);
     const oppDurchmarschChance = calculateChance(sortedOpponentHand);
@@ -44,7 +44,9 @@ possibleOpponentHands.forEach((opponentHand: Card[]) => {
     //     possibleHeuristics.set(oppDurchmarschChance, 1);
     // }
 });
+console.timeEnd("calcOpponentChances");
 
+console.log(opponentDurchmarschChances);
 console.log(`opponent durchmarsch chance is ${chalk.cyan(opponentDurchmarschChances / possibleOpponentHands.length * 100)}%`);
 
 // // graph bs
