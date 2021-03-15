@@ -8,7 +8,7 @@ const MINI_GAME_NAME: string = "durchmarsch";
 
 const logChanceIfApplicable = (hand: Hand, chance: number) => {
     if (hand.logging) {
-        console.log(`${MINI_GAME_NAME} chance: ${chalk.cyan(chance)}%`);
+        console.log(`${MINI_GAME_NAME} chance: ${chalk.cyan(chance * 100)}%`);
     }
 }
 
