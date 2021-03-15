@@ -72,9 +72,7 @@ class Durchmarsch extends MiniGame {
     }
 
     calculateChance(hand: Hand): number {
-        if (hand.length !== 10) {
-            throw new Error(`Invalid hand length ${hand.length}`);
-        }
+        this.validateHand(hand);
         if (!this.meetsPrerequisites(hand)) {
             return 0;
         }

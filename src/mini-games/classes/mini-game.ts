@@ -19,6 +19,12 @@ abstract class MiniGame {
         }
     }
 
+    validateHand(hand: Hand) {
+        if (hand.length !== 10) {
+            throw new Error(`Invalid hand length ${hand.length}`);
+        }
+    }
+
     abstract meetsPrerequisites(hand: Hand): boolean;
 
     abstract calculateChance(hand: Hand): number;
