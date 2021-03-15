@@ -1,6 +1,6 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
-import { Hand } from '../classes/hand';
+import { Hand } from '../../classes/hand';
 
 abstract class MiniGame {
     readonly rank: number;

@@ -1,6 +1,6 @@
 import { Hand } from '../classes/hand';
-import { Durchmarsch } from './durchmarsch';
-import { MiniGame } from './mini-game';
+import { Durchmarsch } from './classes/durchmarsch';
+import { MiniGame } from './classes/mini-game';
 
 const supportedMiniGames: MiniGame[] = [new Durchmarsch()];
 
