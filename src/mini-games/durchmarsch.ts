@@ -3,12 +3,12 @@ import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 
 const TOTAL_VALUE: number = 6;
-const GAME_RANK: number = 7;
-const GAME_NAME: string = "durchmarsch";
+const MINI_GAME_RANK: number = 7;
+const MINI_GAME_NAME: string = "durchmarsch";
 
 const logChanceIfApplicable = (hand: Hand, chance: number) => {
     if (hand.logging) {
-        console.log(`${GAME_NAME} chance: ${chalk.cyan(chance)}%`);
+        console.log(`${MINI_GAME_NAME} chance: ${chalk.cyan(chance)}%`);
     }
 }
 
@@ -100,7 +100,7 @@ const calculateExpectedValue = (hand: Hand): number => {
 };
 
 const getRank = (): number => {
-    return GAME_RANK;
+    return MINI_GAME_RANK;
 };
 
 export { calculateChance, calculateExpectedValue, getRank };
