@@ -9,8 +9,13 @@
         "moduleResolution": "node",
     },
     "include": [
-        "src"
+        "src/**/*.ts",
     ],
+    "paths": {
+        "@/*": [
+            "src/*"
+        ]
+    },
     "exclude": [
         "node_modules",
         "**/__tests__/*"
