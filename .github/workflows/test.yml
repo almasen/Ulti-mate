@@ -24,13 +24,13 @@ jobs:
         working-directory: ./
         run: npm ci
 
-      - name: Build project
-        working-directory: ./
-        run: npm run build
-
       - name: Run Lint
         working-directory: ./
         run: npm run lint
+
+      - name: Build project
+        working-directory: ./
+        run: npm run build
 
   test:
     needs: build
