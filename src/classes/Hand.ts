@@ -15,6 +15,8 @@ class Hand extends Array {
     eights: Card[] = [];
     sevens: Card[] = [];
 
+    logging: boolean = false;
+
     addCard(card: Card) {
         switch (card.suit.letter) {
             case 'H':
@@ -106,6 +108,10 @@ class Hand extends Array {
             });
         }
         return printString;
+    }
+
+    setLogging(logging: boolean): void {
+        this.logging = logging;
     }
 }
 
