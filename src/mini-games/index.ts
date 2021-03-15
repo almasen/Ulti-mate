@@ -1,7 +1,8 @@
 import { Hand } from '../classes/Hand';
-import * as durchmarsch from './durchmarsch';
+import { Durchmarsch } from './durchmarsch';
+import { MiniGame } from './MiniGame';
 
-const supportedMiniGames = [durchmarsch];
+const supportedMiniGames: MiniGame[] = [new Durchmarsch()];
 
 type handPotential = {
     expectedValue: number;
@@ -13,7 +14,7 @@ const calculateHandPotential = (hand: Hand): handPotential => {
     let bestMiniGame: number = 0;
     supportedMiniGames.forEach((miniGame) => {
         const expectedMiniGameValue = miniGame.calculateExpectedValue(hand);
-        const miniGameRank = miniGame.getRank();
+        const miniGameRank = miniGame.rank;
         if (
             expectedMiniGameValue !== 0 &&
             (expectedMiniGameValue > expectedHandValue ||
