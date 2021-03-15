@@ -1,16 +1,17 @@
+/* tslint:disable:no-console */
 import chalk from 'chalk';
 import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 
 const TOTAL_VALUE: number = 6;
 const MINI_GAME_RANK: number = 7;
-const MINI_GAME_NAME: string = "durchmarsch";
+const MINI_GAME_NAME: string = 'durchmarsch';
 
 const logChanceIfApplicable = (hand: Hand, chance: number) => {
     if (hand.logging) {
         console.log(`${MINI_GAME_NAME} chance: ${chalk.cyan(chance * 100)}%`);
     }
-}
+};
 
 const meetsPrerequisites = (hand: Hand): boolean => {
     return hand.aces.length >= 2;

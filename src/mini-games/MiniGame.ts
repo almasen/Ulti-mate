@@ -1,11 +1,11 @@
+/* tslint:disable:no-console */
 import chalk from 'chalk';
-import { Card } from '../classes/Card';
-import { Hand } from "../classes/Hand";
+import { Hand } from '../classes/Hand';
 
 abstract class MiniGame {
-    rank: number;
-    totalValue: number;
-    name: string;
+    readonly rank: number;
+    readonly totalValue: number;
+    readonly name: string;
 
     constructor(rank: number, totalValue: number, name: string) {
         this.rank = rank;

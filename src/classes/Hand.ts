@@ -1,19 +1,19 @@
 import { Card } from './Card';
 
 class Hand extends Array {
-    hearts: Card[] = [];
-    bells: Card[] = [];
-    leaves: Card[] = [];
-    acorns: Card[] = [];
+    readonly hearts: Card[] = [];
+    readonly bells: Card[] = [];
+    readonly leaves: Card[] = [];
+    readonly acorns: Card[] = [];
 
-    aces: Card[] = [];
-    kings: Card[] = [];
-    overs: Card[] = [];
-    unters: Card[] = [];
-    tens: Card[] = [];
-    nines: Card[] = [];
-    eights: Card[] = [];
-    sevens: Card[] = [];
+    readonly aces: Card[] = [];
+    readonly kings: Card[] = [];
+    readonly overs: Card[] = [];
+    readonly unters: Card[] = [];
+    readonly tens: Card[] = [];
+    readonly nines: Card[] = [];
+    readonly eights: Card[] = [];
+    readonly sevens: Card[] = [];
 
     logging: boolean = false;
 
