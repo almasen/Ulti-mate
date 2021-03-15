@@ -1,5 +1,5 @@
-import { Card } from '../classes/card';
-import { Hand } from '../classes/hand';
+import { Card } from '../classes/Card';
+import { Hand } from '../classes/Hand';
 
 const sortHand = (hand: Card[]): Hand => {
     const sortedHand = new Hand();

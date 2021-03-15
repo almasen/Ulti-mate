@@ -1,6 +1,6 @@
-import { Suit } from './classes/suit';
-import { CardRank } from './classes/card-rank';
-import { Card } from './classes/card';
+import { Suit } from './classes/Suit';
+import { CardRank } from './classes/CardRank';
+import { Card } from './classes/Card';
 import { buildCardDeck } from './util/deck-builder';
 import { freezeMap } from './util/freezer';
 import { shuffle } from './util/card-deck';

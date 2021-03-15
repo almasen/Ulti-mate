@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
-import { Card } from '../classes/card';
-import { Hand } from '../classes/hand';
+import { Card } from '../classes/Card';
+import { Hand } from '../classes/Hand';
 import { CARD_MAP, DECK } from '../globals';
 import { sortHand } from '../util/hand';
 import { Command, InvalidOptionArgumentError, Option } from 'commander';

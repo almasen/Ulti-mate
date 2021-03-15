@@ -1,6 +1,6 @@
-import { MiniGame } from './mini-game';
-import { Hand } from '../../classes/hand';
-import { Card } from '../../classes/card';
+import { MiniGame } from './MiniGame';
+import { Hand } from '../../classes/Hand';
+import { Card } from '../../classes/Card';
 
 class Betli extends MiniGame {
     constructor() {
@@ -17,7 +17,7 @@ class Betli extends MiniGame {
         }
         let holes = 0;
 
-        for (let i = suit.length -1; i >= 0; i++) {
+        for (let i = suit.length - 1; i >= 0; i++) {
             const element = suit[i];
             holes += i;
         }
@@ -41,7 +41,7 @@ class Betli extends MiniGame {
         holes += this.countHoles(hand.leaves);
         holes += this.countHoles(hand.acorns);
 
-        const chance = 0
+        const chance = 0;
 
         this.logChanceIfApplicable(hand, chance);
 
