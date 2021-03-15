@@ -36,7 +36,7 @@ possibleOpponentHands.forEach((opponentHand: Card[]) => {
 });
 console.timeEnd('calcOpponentChances');
 
-console.log(opponentHandPotentials);
+console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
 console.log(
     `expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
 );

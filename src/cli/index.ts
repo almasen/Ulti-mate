@@ -70,6 +70,8 @@ if (options.customHand) {
     hand = sortHand(DECK.slice(0, 10));
     possibleOpponentCards = DECK.slice(10);
 }
+// set logging true for player hand
+hand.setLogging(true);
 console.log('Hand: ' + chalk.cyan(hand.printWholeHand()));
 
 const getHand = (): Hand => {

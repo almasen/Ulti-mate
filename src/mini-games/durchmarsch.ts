@@ -1,8 +1,16 @@
+import chalk from 'chalk';
 import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 
 const TOTAL_VALUE: number = 6;
 const GAME_RANK: number = 7;
+const GAME_NAME: string = "durchmarsch";
+
+const logChanceIfApplicable = (hand: Hand, chance: number) => {
+    if (hand.logging) {
+        console.log(`${GAME_NAME} chance: ${chalk.cyan(chance)}%`);
+    }
+}
 
 const meetsPrerequisites = (hand: Hand): boolean => {
     return hand.aces.length >= 2;
@@ -81,6 +89,8 @@ const calculateChance = (hand: Hand): number => {
     chance *= checkHoles(hand.bells);
     chance *= checkHoles(hand.leaves);
     chance *= checkHoles(hand.acorns);
+
+    logChanceIfApplicable(hand, chance);
 
     return chance >= MAX_RISK ? chance : 0;
 };
