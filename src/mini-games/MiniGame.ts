@@ -21,7 +21,11 @@ abstract class MiniGame {
 
     abstract meetsPrerequisites(hand: Hand): boolean;
 
-    abstract calculateChance(hand: Hand): boolean;
+    abstract calculateChance(hand: Hand): number;
 
-    abstract calculateExpectedValue(hand: Hand): boolean;
+    calculateExpectedValue(hand: Hand): number {
+        return this.calculateChance(hand) * this.totalValue;
+    }
 }
+
+export { MiniGame };
