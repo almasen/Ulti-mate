@@ -1,4 +1,4 @@
-import { Card } from './Card';
+import { Card } from './card';
 
 class Hand extends Array {
     readonly hearts: Card[] = [];

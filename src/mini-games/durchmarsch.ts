@@ -1,6 +1,6 @@
-import { MiniGame } from './MiniGame';
-import { Hand } from '../classes/Hand';
-import { Card } from '../classes/Card';
+import { MiniGame } from './mini-game';
+import { Hand } from '../classes/hand';
+import { Card } from '../classes/card';
 
 class Durchmarsch extends MiniGame {
     constructor() {

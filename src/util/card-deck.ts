@@ -1,5 +1,5 @@
-import { Card } from '../classes/Card';
-import { Hand } from '../classes/Hand';
+import { Card } from '../classes/card';
+import { Hand } from '../classes/hand';
 import { sortHand } from './hand';
 import { getAllSubsets } from './subset';
 

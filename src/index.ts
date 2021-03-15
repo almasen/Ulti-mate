@@ -3,8 +3,8 @@ import chalk from 'chalk';
 import { getHand, getPossibleOpponentCards } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
 import { sortHand } from './util/hand';
-import { Card } from './classes/Card';
-import { Hand } from './classes/Hand';
+import { Card } from './classes/card';
+import { Hand } from './classes/hand';
 import { calculateHandPotential } from './mini-games';
 
 const hand: Hand = getHand();

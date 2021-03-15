@@ -1,5 +1,5 @@
-import { Suit } from './Suit';
-import { CardRank } from './CardRank';
+import { Suit } from './suit';
+import { CardRank } from './card-rank';
 
 class Card {
     readonly id: number;

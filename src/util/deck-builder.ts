@@ -1,4 +1,4 @@
-import { Card } from '../classes/Card';
+import { Card } from '../classes/card';
 
 const buildCardDeck = (
     SUITS: any[],
