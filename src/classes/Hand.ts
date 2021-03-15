@@ -15,6 +15,8 @@ class Hand extends Array {
     readonly eights: Card[] = [];
     readonly sevens: Card[] = [];
 
+    private suitDeficiencies: number = -1;
+
     logging: boolean = false;
 
     addCard(card: Card) {
@@ -108,6 +110,13 @@ class Hand extends Array {
             });
         }
         return printString;
+    }
+
+    getSuitDeficiencies(): number {
+        if (this.suitDeficiencies === -1) {
+            this.suitDeficiencies = (this.hearts.length ? 0 : 1) + (this.bells.length ? 0 : 1) + (this.leaves.length ? 0 : 1) + (this.acorns.length ? 0 : 1);
+        }
+        return this.suitDeficiencies;
     }
 
     setLogging(logging: boolean): void {
