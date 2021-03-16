@@ -11,15 +11,23 @@ class Betli extends MiniGame {
         return hand.aces.length < 3;
     }
 
+    // TODO: as a second level prerequisite you must have max 8 - 2 x holes from a suit
     countHoles(suit: Card[]): number {
         if (suit.length === 0) {
             return 0;
         }
         let holes = 0;
+        let expected = 7;
 
-        for (let i = suit.length - 1; i >= 0; i++) {
-            const element = suit[i];
-            holes += i;
+        for (let i = suit.length - 1; i >= 0; i--) {
+            const card = suit[i];
+            const cardPosition = card.id % 8;
+            if (cardPosition !== expected) {
+                holes += (expected - cardPosition);
+                expected = cardPosition - 1;
+            } else {
+                --expected;
+            }
         }
         return holes;
     }
