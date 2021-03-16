@@ -181,7 +181,7 @@ class Hand extends Array {
                 printString += e.rank.letter + ' ';
             });
         }
-        return printString;
+        return printString.trim();
     }
 
     getSuitDeficiencies(): number {

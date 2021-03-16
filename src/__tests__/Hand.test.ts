@@ -76,3 +76,45 @@ test('hand printing ♦ O U X IX VIII VII ♠ A K O U', () => {
     }
     expect(hand.printWholeHand()).toBe('♦ O U X IX VIII VII ♠ A K O U');
 });
+
+test('hand suit deficiencies ♥ A K O U X IX VIII VII ♦ A K', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 10; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    console.log(hand.printWholeHand());
+    expect(hand.getSuitDeficiencies()).toBe(2);
+});
+
+test('hand suit deficiencies ♥ A K O U X IX VIII VII ♦ A ♠ X', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 9; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    hand.addCard(CARD_MAP.get(20));
+    console.log(hand.printWholeHand());
+    expect(hand.getSuitDeficiencies()).toBe(1);
+});
+
+test('hand suit deficiencies ♥ K O U X IX VIII VII ♦ A ♠ O ♣ K', () => {
+    const hand = new Hand();
+    for (let i = 1; i < 9; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    hand.addCard(CARD_MAP.get(18));
+    hand.addCard(CARD_MAP.get(25));
+    console.log(hand.printWholeHand());
+    expect(hand.getSuitDeficiencies()).toBe(0);
+});
+
+test('hand set logging for player hand', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 10; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    expect(hand.logging).toBe(false);
+    hand.setLogging(true);
+    expect(hand.logging).toBe(true);
+    hand.setLogging(false);
+    expect(hand.logging).toBe(false);
+});
