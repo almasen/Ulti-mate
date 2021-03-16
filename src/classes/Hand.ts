@@ -143,6 +143,8 @@ class Hand extends Array {
                 throw new Error('Invalid rank in hand');
                 break;
         }
+
+        this.removeFromCardArray(this, card);
     }
 
     private removeFromCardArray(arr: Card[], card: Card) {
