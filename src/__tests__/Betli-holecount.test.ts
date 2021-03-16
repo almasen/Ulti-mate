@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { Hand } from '../classes/Hand';
 import { DECK, CARD_MAP } from '../globals';
-import { Betli } from '../mini-games/classes/Betli';
+import { Betli } from '../mini-games/classes/Betlixd';
 
 declare global {
     var MAX_RISK: number;
