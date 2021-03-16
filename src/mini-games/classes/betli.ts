@@ -11,7 +11,6 @@ class Betli extends MiniGame {
         return hand.aces.length < 3;
     }
 
-    // TODO: as a second level prerequisite you must have max 8 - 2 x holes from a suit
     countHoles(suit: Card[]): number {
         if (suit.length === 0) {
             return 0;
@@ -23,7 +22,7 @@ class Betli extends MiniGame {
             const card = suit[i];
             const cardPosition = card.id % 8;
             if (cardPosition !== expected) {
-                holes += (expected - cardPosition);
+                holes += expected - cardPosition;
                 expected = cardPosition - 1;
             } else {
                 --expected;
@@ -42,12 +41,21 @@ class Betli extends MiniGame {
             return 0;
         }
 
-        let holes = 0;
+        const heartsHoles = this.countHoles(hand.hearts);
+        const bellsHoles = this.countHoles(hand.bells);
+        const leavesHoles = this.countHoles(hand.leaves);
+        const acornsHoles = this.countHoles(hand.acorns);
 
-        holes += this.countHoles(hand.hearts);
-        holes += this.countHoles(hand.bells);
-        holes += this.countHoles(hand.leaves);
-        holes += this.countHoles(hand.acorns);
+        if (
+            heartsHoles * 2 + hand.hearts.length > 8 ||
+            bellsHoles * 2 + hand.bells.length > 8 ||
+            leavesHoles * 2 + hand.leaves.length > 8 ||
+            acornsHoles * 2 + hand.acorns.length > 8
+        ) {
+            return 0;
+        }
+
+        const totalHoles = heartsHoles + bellsHoles + leavesHoles + acornsHoles;
 
         const chance = 0;
 

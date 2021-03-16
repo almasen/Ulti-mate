@@ -22,7 +22,7 @@ test('betli holes ♣ VII VIII IX X U O K A', () => {
 test('betli holes ♣ VIII IX X U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==31) {
+        if (i == 31) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -34,7 +34,7 @@ test('betli holes ♣ VIII IX X U O K A', () => {
 test('betli holes ♣ VII IX X U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==30) {
+        if (i == 30) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -46,7 +46,7 @@ test('betli holes ♣ VII IX X U O K A', () => {
 test('betli holes ♣ VII VIII X U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==29) {
+        if (i == 29) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -58,7 +58,7 @@ test('betli holes ♣ VII VIII X U O K A', () => {
 test('betli holes ♣ VII VIII IX U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==28) {
+        if (i == 28) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -70,7 +70,7 @@ test('betli holes ♣ VII VIII IX U O K A', () => {
 test('betli holes ♣ VII VIII IX X O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==27) {
+        if (i == 27) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -82,7 +82,7 @@ test('betli holes ♣ VII VIII IX X O K A', () => {
 test('betli holes ♣ VII VIII IX X U K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==26) {
+        if (i == 26) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -94,7 +94,7 @@ test('betli holes ♣ VII VIII IX X U K A', () => {
 test('betli holes ♣ VII VIII IX X U O A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==25) {
+        if (i == 25) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -106,7 +106,7 @@ test('betli holes ♣ VII VIII IX X U O A', () => {
 test('betli holes ♣ VII VIII IX X U O K', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==24) {
+        if (i == 24) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -118,7 +118,7 @@ test('betli holes ♣ VII VIII IX X U O K', () => {
 test('betli holes ♣ IX X U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==30 || i==31) {
+        if (i == 30 || i == 31) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -130,7 +130,7 @@ test('betli holes ♣ IX X U O K A', () => {
 test('betli holes ♣ U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i==28 || i==29 || i==30 || i==31) {
+        if (i == 28 || i == 29 || i == 30 || i == 31) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
@@ -142,7 +142,7 @@ test('betli holes ♣ U O K A', () => {
 test('betli holes ♣ VIII IX X O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
-        if (i== 27 || i==31) {
+        if (i == 27 || i == 31) {
             continue;
         }
         suit.push(CARD_MAP.get(i));
