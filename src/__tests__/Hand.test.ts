@@ -82,7 +82,6 @@ test('hand suit deficiencies ♥ A K O U X IX VIII VII ♦ A K', () => {
     for (let i = 0; i < 10; i++) {
         hand.addCard(CARD_MAP.get(i));
     }
-    console.log(hand.printWholeHand());
     expect(hand.getSuitDeficiencies()).toBe(2);
 });
 
@@ -92,7 +91,6 @@ test('hand suit deficiencies ♥ A K O U X IX VIII VII ♦ A ♠ X', () => {
         hand.addCard(CARD_MAP.get(i));
     }
     hand.addCard(CARD_MAP.get(20));
-    console.log(hand.printWholeHand());
     expect(hand.getSuitDeficiencies()).toBe(1);
 });
 
@@ -103,7 +101,6 @@ test('hand suit deficiencies ♥ K O U X IX VIII VII ♦ A ♠ O ♣ K', () => {
     }
     hand.addCard(CARD_MAP.get(18));
     hand.addCard(CARD_MAP.get(25));
-    console.log(hand.printWholeHand());
     expect(hand.getSuitDeficiencies()).toBe(0);
 });
 
