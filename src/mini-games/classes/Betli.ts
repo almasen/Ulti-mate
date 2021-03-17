@@ -31,8 +31,44 @@ class Betli extends MiniGame {
         return holes;
     }
 
-    findWorstCard(hand: Hand): number {
-        return 3;
+    removeWorstCard(hand: Hand): Hand {
+        // test with hand with two aces
+        let worstCard: Card = hand[0];
+        let biggestHole: number = 0;
+        hand.allSuits.forEach((suit: Card[]) => {
+            let holes: number;
+            let largestCard: Card;
+            let secondLargestCard: Card;
+            if (suit.length > 0 && suit.length < 7) {
+                largestCard = suit[0];
+                if (suit.length === 1) {
+                    holes = 7 - (largestCard.id % 8);
+                    // try to make a suit deficiency
+                    if (holes >= 3) {
+                        return hand.removeCard(largestCard);
+                    }
+                } else {
+                    if (largestCard.rank.letter === 'A') {
+                        largestCard = suit[1];
+                        if (suit.length === 2) {
+                            holes = 7 - (largestCard.id % 8);
+                        } else {
+                            secondLargestCard = suit[2];
+                            holes = secondLargestCard.id - largestCard.id - 1;
+                        }
+                    } else {
+                        secondLargestCard = suit[2];
+                        holes = secondLargestCard.id - largestCard.id - 1;
+                    }
+                }
+                if (holes >= biggestHole) {
+                    biggestHole = holes;
+                    worstCard = largestCard;
+                }
+            }
+        });
+        hand.removeCard(worstCard);
+        return hand;
     }
 
     calculateChance(hand: Hand): number {
@@ -41,10 +77,12 @@ class Betli extends MiniGame {
             return 0;
         }
 
-        const heartsHoles = this.countHoles(hand.hearts);
-        const bellsHoles = this.countHoles(hand.bells);
-        const leavesHoles = this.countHoles(hand.leaves);
-        const acornsHoles = this.countHoles(hand.acorns);
+        const best9Cards = this.removeWorstCard(hand);
+
+        const heartsHoles = this.countHoles(best9Cards.hearts);
+        const bellsHoles = this.countHoles(best9Cards.bells);
+        const leavesHoles = this.countHoles(best9Cards.leaves);
+        const acornsHoles = this.countHoles(best9Cards.acorns);
 
         if (
             heartsHoles * 2 + hand.hearts.length > 8 ||
@@ -56,10 +94,10 @@ class Betli extends MiniGame {
         }
 
         const totalHoles = heartsHoles + bellsHoles + leavesHoles + acornsHoles;
+        const suitDeficiencies = best9Cards.getSuitDeficiencies();
+        const chance = Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
 
-        const chance = 0;
-
-        this.logChanceIfApplicable(hand, chance);
+        this.logChanceIfApplicable(best9Cards, chance);
 
         return chance >= MAX_RISK ? chance : 0;
     }

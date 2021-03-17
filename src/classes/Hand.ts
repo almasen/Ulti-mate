@@ -15,8 +15,17 @@ class Hand extends Array {
     readonly eights: Card[] = [];
     readonly sevens: Card[] = [];
 
-    readonly suitArrayNames: string[] = ['hearts', 'bells', 'leaves', 'acorns'];
-    readonly rankArrayNames: string[] = ['aces', 'kings', 'overs', 'unters', 'tens', 'nines', 'eights', 'sevens'];
+    readonly allSuits: Card[][] = [this.hearts, this.bells, this.leaves, this.acorns];
+    readonly allRanks: Card[][] = [
+        this.aces,
+        this.kings,
+        this.overs,
+        this.unters,
+        this.tens,
+        this.nines,
+        this.eights,
+        this.sevens,
+    ];
 
     private suitDeficiencies: number = -1;
 
