@@ -1,5 +1,6 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
+import { throws } from 'node:assert';
 import { Hand } from '../../classes/Hand';
 
 abstract class MiniGame {

@@ -3,6 +3,8 @@ import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
 
 class Betli extends MiniGame {
+    startingCard: Card | null = null;
+
     constructor() {
         super(6, 5, 'betli');
     }
@@ -20,6 +22,9 @@ class Betli extends MiniGame {
 
         for (let i = suit.length - 1; i >= 0; i--) {
             const card = suit[i];
+            if (this.startingCard?.id === card.id) {
+                continue;
+            }
             const cardPosition = card.id % 8;
             if (cardPosition !== expected) {
                 holes += expected - cardPosition;
@@ -31,8 +36,7 @@ class Betli extends MiniGame {
         return holes;
     }
 
-    removeWorstCard(hand: Hand): Hand {
-        // test with hand with two aces
+    findStartingCard(hand: Hand): Card {
         let worstCard: Card = hand[0];
         let biggestHole: number = 0;
         for (const suit of hand.allSuits) {
@@ -71,8 +75,7 @@ class Betli extends MiniGame {
                 }
             }
         }
-        hand.removeCard(worstCard);
-        return hand;
+        return worstCard;
     }
 
     calculateChance(hand: Hand): number {
@@ -88,7 +91,8 @@ class Betli extends MiniGame {
         const acornsCount = hand.acorns.length;
 
         // remove starting card from analytics
-        this.removeWorstCard(hand);
+        this.startingCard = null;
+        this.startingCard = this.findStartingCard(hand);
 
         const heartsHoles = this.countHoles(hand.hearts);
         const bellsHoles = this.countHoles(hand.bells);

@@ -1,8 +1,9 @@
 import { Hand } from '../classes/Hand';
+import { Betli } from './classes/Betli';
 import { Durchmarsch } from './classes/Durchmarsch';
 import { MiniGame } from './classes/MiniGame';
 
-const supportedMiniGames: MiniGame[] = [new Durchmarsch()];
+const supportedMiniGames: MiniGame[] = [new Betli(), new Durchmarsch()];
 
 type handPotential = {
     expectedValue: number;
