@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import { Hand } from '../classes/Hand';
 import { Betli } from './classes/Betli';
 import { Durchmarsch } from './classes/Durchmarsch';
