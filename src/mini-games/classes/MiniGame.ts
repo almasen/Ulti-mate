@@ -1,6 +1,5 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
-import { throws } from 'node:assert';
 import { Hand } from '../../classes/Hand';
 
 abstract class MiniGame {
@@ -16,7 +15,29 @@ abstract class MiniGame {
 
     logChanceIfApplicable(hand: Hand, chance: number) {
         if (hand.logging) {
-            console.log(`${this.name} chance: ${chalk.cyan(chance * 100)}%`);
+            let colour;
+            switch (true) {
+                case chance === 1:
+                    colour = chalk.green;
+                    break;
+
+                case chance >= 0.75:
+                    colour = chalk.greenBright;
+                    break;
+
+                case chance >= MAX_RISK:
+                    colour = chalk.yellowBright;
+                    break;
+
+                case chance > 0:
+                    colour = chalk.yellow;
+                    break;
+
+                default:
+                    colour = chalk.red;
+                    break;
+            }
+            console.log(`${this.name} chance: ${colour(chance * 100)}%`);
         }
     }
 

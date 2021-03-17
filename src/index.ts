@@ -12,10 +12,10 @@ const possibleOpponentCards: Card[] = getPossibleOpponentCards();
 
 const handPotential = calculateHandPotential(hand);
 
-console.log(`expected value of hand is ${chalk.cyan(handPotential.expectedValue)}`);
-console.log(`expected rank of hand is ${chalk.cyan(handPotential.bestMiniGame)}`);
+console.log(`expected value of hand is: ${chalk.cyan(handPotential.expectedValue)}`);
+console.log(`expected rank of hand is: ${chalk.cyan(handPotential.bestMiniGame)}`);
 
-console.log('Calculating opponent hands..');
+console.log('\nCalculating opponent hands..');
 
 console.time('calcOpponentHands');
 const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
