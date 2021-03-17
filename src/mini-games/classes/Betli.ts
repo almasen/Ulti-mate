@@ -35,17 +35,21 @@ class Betli extends MiniGame {
         // test with hand with two aces
         let worstCard: Card = hand[0];
         let biggestHole: number = 0;
-        hand.allSuits.forEach((suit: Card[]) => {
+        for (const suit of hand.allSuits) {
             let holes: number;
             let largestCard: Card;
             let secondLargestCard: Card;
             if (suit.length > 0 && suit.length < 7) {
                 largestCard = suit[0];
                 if (suit.length === 1) {
+                    if (largestCard.rank.letter === 'A') {
+                        continue; // we can't remove an Ace
+                    }
                     holes = 7 - (largestCard.id % 8);
                     // try to make a suit deficiency
                     if (holes >= 3) {
-                        return hand.removeCard(largestCard);
+                        worstCard = largestCard;
+                        break;
                     }
                 } else {
                     if (largestCard.rank.letter === 'A') {
@@ -57,7 +61,7 @@ class Betli extends MiniGame {
                             holes = secondLargestCard.id - largestCard.id - 1;
                         }
                     } else {
-                        secondLargestCard = suit[2];
+                        secondLargestCard = suit[1];
                         holes = secondLargestCard.id - largestCard.id - 1;
                     }
                 }
@@ -66,7 +70,7 @@ class Betli extends MiniGame {
                     worstCard = largestCard;
                 }
             }
-        });
+        }
         hand.removeCard(worstCard);
         return hand;
     }
@@ -84,6 +88,7 @@ class Betli extends MiniGame {
         const leavesHoles = this.countHoles(best9Cards.leaves);
         const acornsHoles = this.countHoles(best9Cards.acorns);
 
+        // TODO: it ignores the dropped card!
         if (
             heartsHoles * 2 + hand.hearts.length > 8 ||
             bellsHoles * 2 + hand.bells.length > 8 ||
