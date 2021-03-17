@@ -74,6 +74,7 @@ class Durchmarsch extends MiniGame {
     calculateChance(hand: Hand): number {
         this.validateHand(hand);
         if (!this.meetsPrerequisites(hand)) {
+            this.logChanceIfApplicable(hand, 0);
             return 0;
         }
         let chance = 1;
