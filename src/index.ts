@@ -1,5 +1,6 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
+import cliProgress from 'cli-progress';
 import { getHand, getPossibleOpponentCards, calculateOpponentHands } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
 import { sortHand } from './util/hand';
@@ -25,16 +26,29 @@ if (calculateOpponentHands) {
     let opponentHandPotentials = 0;
     let greaterRankCount = 0;
 
+    const progressBar = new cliProgress.SingleBar({
+        format: 'Progress |' + chalk.cyanBright('{bar}') + '| {percentage}% || ETA: {eta}s || {value}/{total} Opponents',
+        barCompleteChar: '\u2588',
+        barIncompleteChar: '\u2591',
+        hideCursor: true,
+        stopOnComplete: true,
+        clearOnComplete: true,
+    });
+    progressBar.start(possibleOpponentHands.length, 0);
+
     // const possibleHeuristics = new Map();
     console.time('calcOpponentChances');
-    possibleOpponentHands.forEach((opponentHand: Card[]) => {
+    for (let i = 0; i < possibleOpponentHands.length; i++) {
+        progressBar.update(i);
+        const opponentHand: Card[] = possibleOpponentHands[i];
         const sortedOpponentHand = sortHand(opponentHand);
         const opponentHandPotential = calculateHandPotential(sortedOpponentHand);
         opponentHandPotentials += opponentHandPotential.expectedValue;
         if (handPotential.bestMiniGame < opponentHandPotential.bestMiniGame) {
             ++greaterRankCount;
         }
-    });
+    }
+    progressBar.update(possibleOpponentHands.length);
     console.timeEnd('calcOpponentChances');
 
     console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
