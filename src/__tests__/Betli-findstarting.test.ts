@@ -2,7 +2,7 @@
 import { Hand } from '../classes/Hand';
 import { DECK, CARD_MAP } from '../globals';
 import { Betli } from '../mini-games/classes/Betli';
-import {Card } from '../classes/Card';
+import { Card } from '../classes/Card';
 
 declare global {
     var MAX_RISK: number;
@@ -49,7 +49,6 @@ test('betli remove worst ♥ A K O U X IX VIII VII ♦ VII ♠ X', () => {
     hand.addCard(CARD_MAP.get(15));
     hand.addCard(CARD_MAP.get(20));
 
-
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('X');
     expect(startingCard.suit.letter).toBe('L');
@@ -76,7 +75,6 @@ test('betli remove worst ♥ A ♦ A K O U X IX VIII VII ♠ VII', () => {
     hand.addCard(CARD_MAP.get(0));
     hand.addCard(CARD_MAP.get(23));
 
-
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('VII');
     expect(startingCard.suit.letter).toBe('L');
@@ -90,7 +88,6 @@ test('betli remove worst ♥ A ♦ K O U X IX VIII VII ♠ VII ♣ A', () => {
     hand.addCard(CARD_MAP.get(0));
     hand.addCard(CARD_MAP.get(23));
     hand.addCard(CARD_MAP.get(24));
-
 
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('VII');
@@ -106,7 +103,6 @@ test('betli remove worst ♥ A K ♦ K O U X IX VIII VII ♠ VII', () => {
     hand.addCard(CARD_MAP.get(1));
     hand.addCard(CARD_MAP.get(23));
 
-
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('K');
     expect(startingCard.suit.letter).toBe('H');
@@ -121,7 +117,6 @@ test('betli remove worst ♥ A K O U X IX VIII VII ♠ X VIII', () => {
     hand.addCard(CARD_MAP.get(20));
     hand.addCard(CARD_MAP.get(22));
 
-
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('X');
     expect(startingCard.suit.letter).toBe('L');
@@ -135,7 +130,6 @@ test('betli remove worst ♥ A K VIII ♦ K O U X IX VIII VII', () => {
     hand.addCard(CARD_MAP.get(0));
     hand.addCard(CARD_MAP.get(1));
     hand.addCard(CARD_MAP.get(6));
-
 
     const startingCard: Card = betli.findStartingCard(hand);
     expect(startingCard.rank.letter).toBe('K');

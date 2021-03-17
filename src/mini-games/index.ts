@@ -13,6 +13,9 @@ type handPotential = {
 const calculateHandPotential = (hand: Hand): handPotential => {
     let expectedHandValue: number = 0;
     let bestMiniGame: number = 0;
+    if (hand.logging) {
+        console.log(`\nCalculating chances for supported minigames:`);
+    }
     supportedMiniGames.forEach((miniGame) => {
         const expectedMiniGameValue = miniGame.calculateExpectedValue(hand);
         const miniGameRank = miniGame.rank;
