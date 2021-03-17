@@ -27,7 +27,8 @@ if (calculateOpponentHands) {
     let greaterRankCount = 0;
 
     const progressBar = new cliProgress.SingleBar({
-        format: 'Progress |' + chalk.cyanBright('{bar}') + '| {percentage}% || ETA: {eta}s || {value}/{total} Opponents',
+        format:
+            'Progress |' + chalk.cyanBright('{bar}') + '| {percentage}% || ETA: {eta}s || {value}/{total} Opponents',
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true,

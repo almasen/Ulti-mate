@@ -92,7 +92,6 @@ class Betli extends MiniGame {
         const acornsCount = hand.acorns.length;
 
         // remove starting card from analytics
-        this.startingCard = null;
         this.startingCard = this.findStartingCard(hand);
 
         const heartsHoles = this.countHoles(hand.hearts);
