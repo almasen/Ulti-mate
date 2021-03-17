@@ -106,6 +106,7 @@ class Betli extends MiniGame {
             leavesHoles * 2 + leavesCount > 8 ||
             acornsHoles * 2 + acornsCount > 8
         ) {
+            this.logChanceIfApplicable(hand, 0);
             return 0;
         }
 
