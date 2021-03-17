@@ -10,7 +10,8 @@ const program = new Command();
 
 program
     .addOption(new Option('-R, --max-risk <percentage>', 'Specify maximum risk in percentages').default(50, '50%'))
-    .option('-H, --custom-hand <ids...>', 'Specify a custom hand via card IDs');
+    .option('-H, --custom-hand <ids...>', 'Specify a custom hand via card IDs')
+    .option('--no-opponents', 'Skip calculation of opponents\' hands');
 
 program.parse(process.argv);
 const options = program.opts();
@@ -28,6 +29,10 @@ declare global {
     globalThis.MAX_RISK = parsedValue / 100;
     console.log(`Maximum risk is ${chalk.cyan(MAX_RISK * 100)}%`);
 }
+
+/* set variable whether to calculate opponent hands */
+
+const calculateOpponentHands: boolean = options.opponents;
 
 /* set up user and opponent hands according to params */
 
@@ -82,4 +87,4 @@ const getPossibleOpponentCards = (): Card[] => {
     return possibleOpponentCards;
 };
 
-export { getHand, getPossibleOpponentCards };
+export { getHand, getPossibleOpponentCards, calculateOpponentHands };

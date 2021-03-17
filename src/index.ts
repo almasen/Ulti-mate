@@ -1,6 +1,6 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
-import { getHand, getPossibleOpponentCards } from './cli';
+import { getHand, getPossibleOpponentCards, calculateOpponentHands } from './cli';
 import { calculateAndSortPossibleHands } from './util/card-deck';
 import { sortHand } from './util/hand';
 import { Card } from './classes/Card';
@@ -15,32 +15,34 @@ const handPotential = calculateHandPotential(hand);
 console.log(`expected value of hand is: ${chalk.cyan(handPotential.expectedValue)}`);
 console.log(`expected rank of hand is: ${chalk.cyan(handPotential.bestMiniGame)}`);
 
-console.log('\nCalculating opponent hands..');
+if (calculateOpponentHands) {
+    console.log('\nCalculating opponent hands..');
 
-console.time('calcOpponentHands');
-const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
-console.timeEnd('calcOpponentHands');
+    console.time('calcOpponentHands');
+    const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
+    console.timeEnd('calcOpponentHands');
 
-let opponentHandPotentials = 0;
-let greaterRankCount = 0;
+    let opponentHandPotentials = 0;
+    let greaterRankCount = 0;
 
-// const possibleHeuristics = new Map();
-console.time('calcOpponentChances');
-possibleOpponentHands.forEach((opponentHand: Card[]) => {
-    const sortedOpponentHand = sortHand(opponentHand);
-    const opponentHandPotential = calculateHandPotential(sortedOpponentHand);
-    opponentHandPotentials += opponentHandPotential.expectedValue;
-    if (handPotential.bestMiniGame < opponentHandPotential.bestMiniGame) {
-        ++greaterRankCount;
-    }
-});
-console.timeEnd('calcOpponentChances');
+    // const possibleHeuristics = new Map();
+    console.time('calcOpponentChances');
+    possibleOpponentHands.forEach((opponentHand: Card[]) => {
+        const sortedOpponentHand = sortHand(opponentHand);
+        const opponentHandPotential = calculateHandPotential(sortedOpponentHand);
+        opponentHandPotentials += opponentHandPotential.expectedValue;
+        if (handPotential.bestMiniGame < opponentHandPotential.bestMiniGame) {
+            ++greaterRankCount;
+        }
+    });
+    console.timeEnd('calcOpponentChances');
 
-console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
-console.log(
-    `expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
-);
-console.log(`greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
+    console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
+    console.log(
+        `expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
+    );
+    console.log(`greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
+}
 
 // // graph bs
 // const keys: number[] = [];
