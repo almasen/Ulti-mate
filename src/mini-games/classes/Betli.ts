@@ -81,28 +81,34 @@ class Betli extends MiniGame {
             return 0;
         }
 
-        const best9Cards = this.removeWorstCard(hand);
+        // store original counts
+        const heartsCount = hand.hearts.length;
+        const bellsCount = hand.bells.length;
+        const leavesCount = hand.leaves.length;
+        const acornsCount = hand.acorns.length;
 
-        const heartsHoles = this.countHoles(best9Cards.hearts);
-        const bellsHoles = this.countHoles(best9Cards.bells);
-        const leavesHoles = this.countHoles(best9Cards.leaves);
-        const acornsHoles = this.countHoles(best9Cards.acorns);
+        // remove starting card from analytics
+        this.removeWorstCard(hand);
 
-        // TODO: it ignores the dropped card!
+        const heartsHoles = this.countHoles(hand.hearts);
+        const bellsHoles = this.countHoles(hand.bells);
+        const leavesHoles = this.countHoles(hand.leaves);
+        const acornsHoles = this.countHoles(hand.acorns);
+
         if (
-            heartsHoles * 2 + hand.hearts.length > 8 ||
-            bellsHoles * 2 + hand.bells.length > 8 ||
-            leavesHoles * 2 + hand.leaves.length > 8 ||
-            acornsHoles * 2 + hand.acorns.length > 8
+            heartsHoles * 2 + heartsCount > 8 ||
+            bellsHoles * 2 + bellsCount > 8 ||
+            leavesHoles * 2 + leavesCount > 8 ||
+            acornsHoles * 2 + acornsCount > 8
         ) {
             return 0;
         }
 
         const totalHoles = heartsHoles + bellsHoles + leavesHoles + acornsHoles;
-        const suitDeficiencies = best9Cards.getSuitDeficiencies();
+        const suitDeficiencies = hand.getSuitDeficiencies();
         const chance = Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
 
-        this.logChanceIfApplicable(best9Cards, chance);
+        this.logChanceIfApplicable(hand, chance);
 
         return chance >= MAX_RISK ? chance : 0;
     }
