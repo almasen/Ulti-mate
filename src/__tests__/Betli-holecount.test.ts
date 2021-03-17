@@ -10,6 +10,12 @@ globalThis.MAX_RISK = 0.5;
 
 const betli = new Betli();
 
+test('betli holes on empty suit', () => {
+    const suit: Card[] = [];
+    const expectedValue = betli.countHoles(suit);
+    expect(expectedValue).toBe(0);
+});
+
 test('betli holes ♣ VII VIII IX X U O K A', () => {
     const suit: Card[] = [];
     for (let i = 24; i < 32; i++) {
