@@ -1,4 +1,5 @@
 import { Card } from './Card';
+import { Suit } from './Suit';
 
 class Hand extends Array {
     readonly hearts: Card[] = [];
@@ -26,6 +27,8 @@ class Hand extends Array {
         this.eights,
         this.sevens,
     ];
+
+    readonly marriageSuits: Suit[] = [];
 
     private suitDeficiencies: number = -1;
 
@@ -65,6 +68,12 @@ class Hand extends Array {
 
             case 'O':
                 this.overs.push(card);
+                if (this.length > 0) {
+                    const previousCard: Card = this[this.length - 1];
+                    if (previousCard.rank.letter === 'K' && previousCard.suit.letter === card.suit.letter) {
+                        this.marriageSuits.push(card.suit);
+                    }
+                }
                 break;
 
             case 'U':
