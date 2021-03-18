@@ -69,6 +69,81 @@ test('hand card removal ♥ K O U X IX VIII VII ♦ A K', () => {
     expect(hand.sevens.length).toBe(1);
 });
 
+test('hand marriages ♥ A K O U X IX VIII VII ♦ A K', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 10; i++) {
+        if (i==2) {
+            continue;
+        }
+        hand.addCard(CARD_MAP.get(i));
+    }
+    hand.addCard(CARD_MAP.get(17));
+    expect(hand.length).toBe(10);
+    expect(hand.marriageSuits.length).toBe(0);
+});
+
+test('hand marriages ♥ A K U X IX VIII VII ♦ A K ♠ K', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 10; i++) {
+        hand.addCard(CARD_MAP.get(i));
+    }
+    expect(hand.length).toBe(10);
+    expect(hand.marriageSuits.length).toBe(1);
+    expect(hand.marriageSuits[0].letter).toBe('H');
+});
+
+test('hand marriages ♥ A K O U X IX VII ♦ A K O', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 11; i++) {
+        if (i==6) {
+            continue;
+        }
+        hand.addCard(CARD_MAP.get(i));
+    }
+    expect(hand.length).toBe(10);
+    expect(hand.marriageSuits.length).toBe(2);
+    expect(hand.marriageSuits[0].letter).toBe('H');
+    expect(hand.marriageSuits[1].letter).toBe('B');
+});
+
+test('hand marriages ♥ A K O U X IX ♦ K O ♠ K O', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 11; i++) {
+        if (i==6 || i == 7 || i == 8) {
+            continue;
+        }
+        hand.addCard(CARD_MAP.get(i));
+    }
+    hand.addCard(CARD_MAP.get(17));
+    hand.addCard(CARD_MAP.get(18));
+    expect(hand.length).toBe(10);
+    expect(hand.marriageSuits.length).toBe(3);
+    expect(hand.marriageSuits[0].letter).toBe('H');
+    expect(hand.marriageSuits[1].letter).toBe('B');
+    expect(hand.marriageSuits[2].letter).toBe('L');
+});
+
+test('hand marriages ♥ A K O U ♦ K O ♠ K O ♣ K O', () => {
+    const hand = new Hand();
+    for (let i = 0; i < 11; i++) {
+        if (i==4 || i==5 || i==6 || i == 7 || i == 8) {
+            continue;
+        }
+        hand.addCard(CARD_MAP.get(i));
+    }
+    hand.addCard(CARD_MAP.get(17));
+    hand.addCard(CARD_MAP.get(18));
+    hand.addCard(CARD_MAP.get(25));
+    hand.addCard(CARD_MAP.get(26));
+    console.log(hand.printWholeHand());
+    expect(hand.length).toBe(10);
+    expect(hand.marriageSuits.length).toBe(4);
+    expect(hand.marriageSuits[0].letter).toBe('H');
+    expect(hand.marriageSuits[1].letter).toBe('B');
+    expect(hand.marriageSuits[2].letter).toBe('L');
+    expect(hand.marriageSuits[3].letter).toBe('A');
+});
+
 test('hand printing ♦ O U X IX VIII VII ♠ A K O U', () => {
     const hand = new Hand();
     for (let i = 10; i < 20; i++) {
