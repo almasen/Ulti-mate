@@ -72,7 +72,7 @@ test('hand card removal ♥ K O U X IX VIII VII ♦ A K', () => {
 test('hand marriages ♥ A K O U X IX VIII VII ♦ A K', () => {
     const hand = new Hand();
     for (let i = 0; i < 10; i++) {
-        if (i==2) {
+        if (i == 2) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -95,7 +95,7 @@ test('hand marriages ♥ A K U X IX VIII VII ♦ A K ♠ K', () => {
 test('hand marriages ♥ A K O U X IX VII ♦ A K O', () => {
     const hand = new Hand();
     for (let i = 0; i < 11; i++) {
-        if (i==6) {
+        if (i == 6) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -109,7 +109,7 @@ test('hand marriages ♥ A K O U X IX VII ♦ A K O', () => {
 test('hand marriages ♥ A K O U X IX ♦ K O ♠ K O', () => {
     const hand = new Hand();
     for (let i = 0; i < 11; i++) {
-        if (i==6 || i == 7 || i == 8) {
+        if (i == 6 || i == 7 || i == 8) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -126,7 +126,7 @@ test('hand marriages ♥ A K O U X IX ♦ K O ♠ K O', () => {
 test('hand marriages ♥ A K O U ♦ K O ♠ K O ♣ K O', () => {
     const hand = new Hand();
     for (let i = 0; i < 11; i++) {
-        if (i==4 || i==5 || i==6 || i == 7 || i == 8) {
+        if (i == 4 || i == 5 || i == 6 || i == 7 || i == 8) {
             continue;
         }
         hand.addCard(CARD_MAP.get(i));
@@ -135,7 +135,6 @@ test('hand marriages ♥ A K O U ♦ K O ♠ K O ♣ K O', () => {
     hand.addCard(CARD_MAP.get(18));
     hand.addCard(CARD_MAP.get(25));
     hand.addCard(CARD_MAP.get(26));
-    console.log(hand.printWholeHand());
     expect(hand.length).toBe(10);
     expect(hand.marriageSuits.length).toBe(4);
     expect(hand.marriageSuits[0].letter).toBe('H');

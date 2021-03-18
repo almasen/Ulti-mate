@@ -3,7 +3,7 @@ import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
 
 class Betli extends MiniGame {
-    startingCard: Card | null = null;
+    private startingCard: Card | null = null;
 
     constructor() {
         super(6, 5, 'betli');

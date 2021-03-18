@@ -28,28 +28,38 @@ class Hand extends Array {
         this.sevens,
     ];
 
+    // suit heuristic values
+    private heartsHeuristic: number = 0;
+    private bellsHeuristic: number = 0;
+    private leavesHeuristic: number = 0;
+    private acornsHeuristic: number = 0;
+
     readonly marriageSuits: Suit[] = [];
 
     private suitDeficiencies: number = -1;
 
-    logging: boolean = false;
+    logging: boolean = false; // TODO: private, getter
 
     addCard(card: Card) {
         switch (card.suit.letter) {
             case 'H':
                 this.hearts.push(card);
+                this.heartsHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'B':
                 this.bells.push(card);
+                this.bellsHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'L':
                 this.leaves.push(card);
+                this.leavesHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'A':
                 this.acorns.push(card);
+                this.acornsHeuristic += card.rank.heuristicValue;
                 break;
 
             default:
@@ -218,6 +228,22 @@ class Hand extends Array {
 
     setLogging(logging: boolean): void {
         this.logging = logging;
+    }
+
+    getHeartsHeuristic() : number {
+        return this.heartsHeuristic;
+    }
+
+    getBellsHeuristic() : number {
+        return this.bellsHeuristic;
+    }
+
+    getLeavesHeuristic() : number {
+        return this.leavesHeuristic;
+    }
+
+    getAcornsHeuristic() : number {
+        return this.acornsHeuristic;
     }
 }
 
