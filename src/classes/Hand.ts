@@ -243,6 +243,35 @@ class Hand extends Array {
         return printString.trim();
     }
 
+    printWholeHandInTrumpOrder(): string {
+        let printString = '';
+        if (this.heartsTrumpOrder.length > 0) {
+            printString += this.heartsTrumpOrder[0].suit.symbol + ' ';
+            this.heartsTrumpOrder.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
+        }
+        if (this.bellsTrumpOrder.length > 0) {
+            printString += this.bellsTrumpOrder[0].suit.symbol + ' ';
+            this.bellsTrumpOrder.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
+        }
+        if (this.leavesTrumpOrder.length > 0) {
+            printString += this.leavesTrumpOrder[0].suit.symbol + ' ';
+            this.leavesTrumpOrder.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
+        }
+        if (this.acornsTrumpOrder.length > 0) {
+            printString += this.acornsTrumpOrder[0].suit.symbol + ' ';
+            this.acornsTrumpOrder.forEach((e) => {
+                printString += e.rank.letter + ' ';
+            });
+        }
+        return printString.trim();
+    }
+
     getSuitDeficiencies(): number {
         if (this.suitDeficiencies === -1) {
             this.suitDeficiencies =
@@ -272,6 +301,44 @@ class Hand extends Array {
 
     getAcornsHeuristic(): number {
         return this.acornsHeuristic;
+    }
+
+    getSuitListFromSuit(suit: Suit): Card[] {
+        switch (suit.letter) {
+            case 'H':
+                return this.hearts;
+
+            case 'B':
+                return this.bells;
+
+            case 'L':
+                return this.leaves;
+
+            case 'A':
+                return this.acorns;
+
+            default:
+                throw new Error(`Unsupported suit ${suit.letter}`);
+        }
+    }
+
+    getSuitHeurFromSuit(suit: Suit): number {
+        switch (suit.letter) {
+            case 'H':
+                return this.heartsHeuristic;
+
+            case 'B':
+                return this.bellsHeuristic;
+
+            case 'L':
+                return this.leavesHeuristic;
+
+            case 'A':
+                return this.acornsHeuristic;
+
+            default:
+                throw new Error(`Unsupported suit ${suit.letter}`);
+        }
     }
 }
 
