@@ -2,7 +2,7 @@ import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Suit } from '../../classes/Suit';
 import { Card } from '../../classes/Card';
-import {randomInt} from 'crypto';
+import { randomInt } from 'crypto';
 
 class Simple extends MiniGame {
     private trump: Suit | null = null;
@@ -16,18 +16,19 @@ class Simple extends MiniGame {
     }
 
     chooseTrumpSuit(hand: Hand): Suit {
+        let largestSuits: Card[][] = [];
+        let largestHeurValue: number = 0;
         // if any suit's length is >= 5 and choose one of those
         let halfHandSuits: Card[][] = [];
         hand.allSuits.forEach((suit: Card[]) => {
             if (suit.length >= 5) {
                 halfHandSuits.push(suit);
             }
-        })
+        });
         // if multiple suits' length is 5 compare their heuristic value
         if (halfHandSuits.length > 0) {
             if (halfHandSuits.length > 1) {
                 let largestHeurSuits: Card[][] = [];
-                let largestHeurValue: number = 0;
                 halfHandSuits.forEach((suit: Card[]) => {
                     let suitHeuristicValue = suit.reduce((a, b) => a + b.rank.heuristicValue, 0);
                     if (hand.marriageSuits.includes(suit[0].suit)) {
@@ -40,15 +41,16 @@ class Simple extends MiniGame {
                         }
                         largestHeurSuits.push(suit);
                     }
-                })
+                });
                 halfHandSuits = [];
-                largestHeurSuits.length > 1 ? halfHandSuits.push(largestHeurSuits[randomInt(0, 2)]) : halfHandSuits.push(largestHeurSuits[0]);
+                largestHeurSuits.length > 1
+                    ? halfHandSuits.push(largestHeurSuits[randomInt(0, 2)])
+                    : halfHandSuits.push(largestHeurSuits[0]);
             }
             return halfHandSuits[0][0].suit;
         }
         // otherwise calculate each suit's heur value accounting for marriages
-        let largestSuits: Card[][] = [];
-        let largestHeurValue: number = 0;
+        largestHeurValue = 0;
         for (const suit of hand.allSuits) {
             if (suit.length === 0) {
                 continue;
@@ -77,7 +79,7 @@ class Simple extends MiniGame {
                     }
                     longestSuits.push(suit);
                 }
-            })
+            });
             largestSuits = longestSuits;
         }
         // in case of tie compare highest cards of suit
@@ -95,7 +97,7 @@ class Simple extends MiniGame {
                         }
                         strongestSuits.push(suit);
                     }
-                })
+                });
                 largestSuits = strongestSuits;
                 if (largestSuits.length === 1) {
                     break;

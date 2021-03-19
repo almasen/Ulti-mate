@@ -258,19 +258,19 @@ class Hand extends Array {
         this.logging = logging;
     }
 
-    getHeartsHeuristic() : number {
+    getHeartsHeuristic(): number {
         return this.heartsHeuristic;
     }
 
-    getBellsHeuristic() : number {
+    getBellsHeuristic(): number {
         return this.bellsHeuristic;
     }
 
-    getLeavesHeuristic() : number {
+    getLeavesHeuristic(): number {
         return this.leavesHeuristic;
     }
 
-    getAcornsHeuristic() : number {
+    getAcornsHeuristic(): number {
         return this.acornsHeuristic;
     }
 }

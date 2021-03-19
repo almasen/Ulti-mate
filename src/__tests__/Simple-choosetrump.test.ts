@@ -23,7 +23,7 @@ test('simple check trump suit ♥ A K U ♦ A K U ♠ A K X ♣ VII', () => {
     hand.addCard(CARD_MAP.get(21));
     hand.addCard(CARD_MAP.get(31));
     const trump = simple.chooseTrumpSuit(hand);
-    expect(trump.letter).toBe("L");
+    expect(trump.letter).toBe('L');
 });
 
 test('simple check trump suit ♥ A X K O U ♦ A K O U IX', () => {
@@ -38,7 +38,7 @@ test('simple check trump suit ♥ A X K O U ♦ A K O U IX', () => {
         hand.addCard(CARD_MAP.get(i));
     }
     const trump = simple.chooseTrumpSuit(hand);
-    expect(trump.letter).toBe("H");
+    expect(trump.letter).toBe('H');
 });
 
 test('simple check trump suit ♥ A K O U X ♦ A K O U X', () => {
@@ -51,5 +51,5 @@ test('simple check trump suit ♥ A K O U X ♦ A K O U X', () => {
     }
     // console.log(hand.printWholeHand());
     const trump = simple.chooseTrumpSuit(hand);
-    expect(trump.letter === "H" || trump.letter === "B").toBe(true);
+    expect(trump.letter === 'H' || trump.letter === 'B').toBe(true);
 });
