@@ -2,10 +2,18 @@ import { Card } from './Card';
 import { Suit } from './Suit';
 
 class Hand extends Array {
+    readonly trumpOrder: Card[] = [];
+
+    // nest these in to a suits Card[][]
     readonly hearts: Card[] = [];
     readonly bells: Card[] = [];
     readonly leaves: Card[] = [];
     readonly acorns: Card[] = [];
+
+    readonly heartsTrumpOrder: Card[] = [];
+    readonly bellsTrumpOrder: Card[] = [];
+    readonly leavesTrumpOrder: Card[] = [];
+    readonly acornsTrumpOrder: Card[] = [];
 
     readonly aces: Card[] = [];
     readonly kings: Card[] = [];
@@ -44,21 +52,25 @@ class Hand extends Array {
         switch (card.suit.letter) {
             case 'H':
                 this.hearts.push(card);
+                this.heartsTrumpOrder.push(card);
                 this.heartsHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'B':
                 this.bells.push(card);
+                this.bellsTrumpOrder.push(card);
                 this.bellsHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'L':
                 this.leaves.push(card);
+                this.leavesTrumpOrder.push(card);
                 this.leavesHeuristic += card.rank.heuristicValue;
                 break;
 
             case 'A':
                 this.acorns.push(card);
+                this.acornsTrumpOrder.push(card);
                 this.acornsHeuristic += card.rank.heuristicValue;
                 break;
 
@@ -112,8 +124,24 @@ class Hand extends Array {
         }
 
         this.push(card);
+        this.trumpOrder.push(card);
+
+        if (this.length === 10) {
+            this.sortCardArrayToTrumpOrder(this.trumpOrder);
+            this.sortCardArrayToTrumpOrder(this.heartsTrumpOrder);
+            this.sortCardArrayToTrumpOrder(this.bellsTrumpOrder);
+            this.sortCardArrayToTrumpOrder(this.leavesTrumpOrder);
+            this.sortCardArrayToTrumpOrder(this.acornsTrumpOrder);
+        }
     }
 
+    private sortCardArrayToTrumpOrder(arr: Card[]) {
+        arr.sort((a: Card, b: Card) => {
+            return a.rank.heuristicValue - b.rank.heuristicValue;
+        });
+    }
+
+    // TODO: deprecate removeCard
     removeCard(card: Card) {
         switch (card.suit.letter) {
             case 'H':
