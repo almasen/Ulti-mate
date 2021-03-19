@@ -1,6 +1,7 @@
 /* tslint:disable:no-console */
 import chalk from 'chalk';
 import { Hand } from '../../classes/Hand';
+import { Suit } from '../../classes/Suit';
 
 abstract class MiniGame {
     readonly rank: number;
@@ -13,7 +14,7 @@ abstract class MiniGame {
         this.name = name;
     }
 
-    logChanceIfApplicable(hand: Hand, chance: number) {
+    logChanceIfApplicable(hand: Hand, chance: number, trump?: Suit) {
         if (hand.logging) {
             let colour;
             switch (true) {
@@ -37,7 +38,9 @@ abstract class MiniGame {
                     colour = chalk.red;
                     break;
             }
-            console.log(`${this.name} chance: ${colour(chance * 100)}%`);
+            trump ?
+                console.log(`${this.name} chance: ${colour(chance * 100)}% (${trump.symbol})`) :
+                console.log(`${this.name} chance: ${colour(chance * 100)}%`);
         }
     }
 

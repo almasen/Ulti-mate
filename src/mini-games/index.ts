@@ -1,10 +1,11 @@
 /* tslint:disable:no-console */
 import { Hand } from '../classes/Hand';
+import { Simple } from './classes/Simple';
 import { Betli } from './classes/Betli';
 import { Durchmarsch } from './classes/Durchmarsch';
 import { MiniGame } from './classes/MiniGame';
 
-const supportedMiniGames: MiniGame[] = [new Betli(), new Durchmarsch()];
+const supportedMiniGames: MiniGame[] = [new Simple(), new Betli(), new Durchmarsch()];
 
 type handPotential = {
     expectedValue: number;
