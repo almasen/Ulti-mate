@@ -38,9 +38,9 @@ abstract class MiniGame {
                     colour = chalk.red;
                     break;
             }
-            trump ?
-                console.log(`${this.name} chance: ${colour(chance * 100)}% (${trump.symbol})`) :
-                console.log(`${this.name} chance: ${colour(chance * 100)}%`);
+            trump
+                ? console.log(`${this.name} chance: ${colour(chance * 100)}% (${trump.symbol})`)
+                : console.log(`${this.name} chance: ${colour(chance * 100)}%`);
         }
     }
 
