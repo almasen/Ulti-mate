@@ -31,10 +31,10 @@ const SUITS: Suit[] = [
 
 const RANKS: CardRank[] = [
     { name: 'Ace', letter: 'A', heuristicValue: 8 },
-    { name: 'King', letter: 'K', heuristicValue: 7 },
-    { name: 'Over', letter: 'O', heuristicValue: 6 },
-    { name: 'Unter', letter: 'U', heuristicValue: 5 },
-    { name: 'Ten', letter: 'X', heuristicValue: 4 },
+    { name: 'King', letter: 'K', heuristicValue: 6 },
+    { name: 'Over', letter: 'O', heuristicValue: 5 },
+    { name: 'Unter', letter: 'U', heuristicValue: 4 },
+    { name: 'Ten', letter: 'X', heuristicValue: 7 },
     { name: 'Nine', letter: 'IX', heuristicValue: 3 },
     { name: 'Eight', letter: 'VIII', heuristicValue: 2 },
     { name: 'Seven', letter: 'VII', heuristicValue: 1 },
