@@ -1,8 +1,8 @@
+import { randomInt } from 'crypto';
 import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Suit } from '../../classes/Suit';
 import { Card } from '../../classes/Card';
-import { randomInt } from 'crypto';
 
 class Simple extends MiniGame {
     private trump: Suit | null = null;
@@ -112,10 +112,29 @@ class Simple extends MiniGame {
         return largestSuits[0][0].suit;
     }
 
-    calculateTrickScore(hand: Hand): number {
-        let score: number = 0;
-        score += hand.aces.length;
-        return score;
+    calculateTrickCount(hand: Hand): number {
+        let tricks: number = 0;
+        tricks += hand.aces.length;
+        // add tens that can be secured
+        hand.tens.forEach((ten: Card) => {
+            // ten + Ace or e.x. ten + over + 9
+            if (hand.getSuitHeurFromSuit(ten.suit) >= 15) {
+                ++tricks;
+            }
+        });
+        // on avg a suit deficiency equals +1 trick with a 10
+        tricks += hand.getSuitDeficiencies();
+        return tricks;
+    }
+
+    calculateMarriageScore(hand: Hand): number {
+        return this.trump && hand.marriageSuits.includes(this.trump)
+            ? hand.marriageSuits.length * 2 + 2
+            : hand.marriageSuits.length * 2;
+    }
+
+    calculateLastTrickScore(hand: Hand): number {
+        return this.trump && hand.getSuitListFromSuit(this.trump).length >= 5 ? 1 : 0;
     }
 
     calculateChance(hand: Hand): number {
@@ -126,11 +145,15 @@ class Simple extends MiniGame {
         }
 
         this.trump = this.chooseTrumpSuit(hand);
-        const trickScore = 0;
 
-        const chance = 0;
+        const trickCount = this.calculateTrickCount(hand);
+        const opponentTrickCount = 8 - trickCount;
 
-        this.logChanceIfApplicable(hand, chance);
+        const expectedScore = trickCount + this.calculateMarriageScore(hand) + this.calculateLastTrickScore(hand);
+
+        const chance = expectedScore > opponentTrickCount ? 1 : 0;
+
+        this.logChanceIfApplicable(hand, chance, this.trump);
 
         return chance >= MAX_RISK ? chance : 0;
     }
