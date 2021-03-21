@@ -3,7 +3,7 @@ import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Suit } from '../../classes/Suit';
 import { Card } from '../../classes/Card';
-import {SUITS} from '../../globals';
+import { SUITS } from '../../globals';
 
 class Simple extends MiniGame {
     private trump: Suit | null = null;
@@ -138,13 +138,8 @@ class Simple extends MiniGame {
         return this.trump && hand.getSuitListFromSuit(this.trump).length >= 5 ? 1 : 0;
     }
 
-    calculateChance(hand: Hand): number {
-        this.validateHand(hand);
-        if (!this.meetsPrerequisites(hand)) {
-            this.logChanceIfApplicable(hand, 0);
-            return 0;
-        }
-
+    calculateChanceDetails(hand: Hand): number {
+        // set trump suit if applicable
         this.trump = this.gameOfHearts ? SUITS[0] : this.chooseTrumpSuit(hand);
 
         const trickCount = this.calculateTrickCount(hand);
@@ -152,11 +147,7 @@ class Simple extends MiniGame {
 
         const expectedScore = trickCount + this.calculateMarriageScore(hand) + this.calculateLastTrickScore(hand);
 
-        const chance = expectedScore > opponentTrickCount ? 1 : 0;
-
-        this.logChanceIfApplicable(hand, chance, this.trump);
-
-        return chance >= MAX_RISK ? chance : 0;
+        return expectedScore > opponentTrickCount ? 1 : 0;
     }
 }
 

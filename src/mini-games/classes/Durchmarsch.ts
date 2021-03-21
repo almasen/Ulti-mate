@@ -71,12 +71,7 @@ class Durchmarsch extends MiniGame {
         }
     }
 
-    calculateChance(hand: Hand): number {
-        this.validateHand(hand);
-        if (!this.meetsPrerequisites(hand)) {
-            this.logChanceIfApplicable(hand, 0);
-            return 0;
-        }
+    calculateChanceDetails(hand: Hand): number {
         let chance = 1;
 
         chance *= this.checkHoles(hand.hearts);
@@ -84,9 +79,7 @@ class Durchmarsch extends MiniGame {
         chance *= this.checkHoles(hand.leaves);
         chance *= this.checkHoles(hand.acorns);
 
-        this.logChanceIfApplicable(hand, chance);
-
-        return chance >= MAX_RISK ? chance : 0;
+        return chance;
     }
 }
 

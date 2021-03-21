@@ -54,7 +54,21 @@ abstract class MiniGame {
 
     abstract meetsPrerequisites(hand: Hand): boolean;
 
-    abstract calculateChance(hand: Hand): number;
+    abstract calculateChanceDetails(hand: Hand): number;
+
+    calculateChance(hand: Hand): number {
+        this.validateHand(hand);
+        if (!this.meetsPrerequisites(hand)) {
+            this.logChanceIfApplicable(hand, 0);
+            return 0;
+        }
+
+        const chance = this.calculateChanceDetails(hand);
+
+        this.logChanceIfApplicable(hand, chance);
+
+        return chance >= MAX_RISK ? chance : 0;
+    }
 
     calculateExpectedValue(hand: Hand): number {
         return this.calculateChance(hand) * this.totalValue;

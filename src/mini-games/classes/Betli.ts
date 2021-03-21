@@ -78,13 +78,7 @@ class Betli extends MiniGame {
         return worstCard;
     }
 
-    calculateChance(hand: Hand): number {
-        this.validateHand(hand);
-        if (!this.meetsPrerequisites(hand)) {
-            this.logChanceIfApplicable(hand, 0);
-            return 0;
-        }
-
+    calculateChanceDetails(hand: Hand): number {
         // store original counts
         const heartsCount = hand.hearts.length;
         const bellsCount = hand.bells.length;
@@ -105,17 +99,12 @@ class Betli extends MiniGame {
             leavesHoles * 2 + leavesCount > 8 ||
             acornsHoles * 2 + acornsCount > 8
         ) {
-            this.logChanceIfApplicable(hand, 0);
             return 0;
         }
 
         const totalHoles = heartsHoles + bellsHoles + leavesHoles + acornsHoles;
         const suitDeficiencies = hand.getSuitDeficiencies();
-        const chance = Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
-
-        this.logChanceIfApplicable(hand, chance);
-
-        return chance >= MAX_RISK ? chance : 0;
+        return Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
     }
 }
 

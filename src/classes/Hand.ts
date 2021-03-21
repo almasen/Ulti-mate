@@ -218,25 +218,25 @@ class Hand extends Array {
         let printString = '';
         if (this.hearts.length > 0) {
             printString += this.hearts[0].suit.symbol + ' ';
-            this.hearts.forEach((e) => {
+            this.hearts.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.bells.length > 0) {
             printString += this.bells[0].suit.symbol + ' ';
-            this.bells.forEach((e) => {
+            this.bells.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.leaves.length > 0) {
             printString += this.leaves[0].suit.symbol + ' ';
-            this.leaves.forEach((e) => {
+            this.leaves.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.acorns.length > 0) {
             printString += this.acorns[0].suit.symbol + ' ';
-            this.acorns.forEach((e) => {
+            this.acorns.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
@@ -247,25 +247,25 @@ class Hand extends Array {
         let printString = '';
         if (this.heartsTrumpOrder.length > 0) {
             printString += this.heartsTrumpOrder[0].suit.symbol + ' ';
-            this.heartsTrumpOrder.forEach((e) => {
+            this.heartsTrumpOrder.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.bellsTrumpOrder.length > 0) {
             printString += this.bellsTrumpOrder[0].suit.symbol + ' ';
-            this.bellsTrumpOrder.forEach((e) => {
+            this.bellsTrumpOrder.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.leavesTrumpOrder.length > 0) {
             printString += this.leavesTrumpOrder[0].suit.symbol + ' ';
-            this.leavesTrumpOrder.forEach((e) => {
+            this.leavesTrumpOrder.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
         if (this.acornsTrumpOrder.length > 0) {
             printString += this.acornsTrumpOrder[0].suit.symbol + ' ';
-            this.acornsTrumpOrder.forEach((e) => {
+            this.acornsTrumpOrder.forEach(e => {
                 printString += e.rank.letter + ' ';
             });
         }
