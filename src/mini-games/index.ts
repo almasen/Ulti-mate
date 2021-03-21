@@ -1,4 +1,5 @@
 /* tslint:disable:no-console */
+import chalk from 'chalk';
 import { Hand } from '../classes/Hand';
 import { Simple } from './classes/Simple';
 import { Betli } from './classes/Betli';
@@ -24,7 +25,8 @@ type handPotential = {
 
 const calculateHandPotential = (hand: Hand): handPotential => {
     let expectedHandValue: number = 0;
-    let bestMiniGame: number = 0;
+    let bestMiniGame: MiniGame | any = null;
+    let bestRank: number = 0;
     if (hand.logging) {
         console.log(`\nCalculating chances for supported minigames:`);
     }
@@ -34,15 +36,19 @@ const calculateHandPotential = (hand: Hand): handPotential => {
         if (
             expectedMiniGameValue !== 0 &&
             (expectedMiniGameValue > expectedHandValue ||
-                (expectedMiniGameValue === expectedHandValue && miniGameRank > bestMiniGame))
+                (expectedMiniGameValue === expectedHandValue && (!bestMiniGame || miniGameRank > bestMiniGame.rank)))
         ) {
             expectedHandValue = expectedMiniGameValue;
-            bestMiniGame = miniGameRank;
+            bestMiniGame = miniGame;
+            bestRank = miniGame.rank;
         }
     });
+    if (hand.logging) {
+        console.log(`\nBest minigame to play is: ${bestMiniGame ? chalk.green(bestMiniGame.name) : chalk.red('none')}`);
+    }
     return {
         expectedValue: expectedHandValue,
-        bestMiniGame,
+        bestMiniGame: bestRank,
     };
 };
 
