@@ -37,7 +37,6 @@ if (calculateOpponentHands) {
     });
     progressBar.start(possibleOpponentHands.length, 0);
 
-    // const possibleHeuristics = new Map();
     console.time('calcOpponentChances');
     for (let i = 0; i < possibleOpponentHands.length; i++) {
         progressBar.update(i);
@@ -58,25 +57,3 @@ if (calculateOpponentHands) {
     );
     console.log(`greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
 }
-
-// // graph bs
-// const keys: number[] = [];
-// let highestCount = 0;
-// possibleHeuristics.forEach((value, key) => {
-//     keys.push(key);
-//     if (value > highestCount) {
-//         highestCount = value;
-//     }
-// });
-// keys.sort((a, b) => a - b);
-
-// console.log('\n\n');
-// // console.log(highestCount);
-
-// keys.forEach(k => {
-//     const relative = Math.round((possibleHeuristics.get(k) / highestCount) * 100);
-//     k < 100
-//         ? console.log(`${k}  ` + 'o'.repeat(relative))
-//         : console.log(`${k} ` + 'o'.repeat(relative));
-// });
-// console.log(possibleHeuristics)
