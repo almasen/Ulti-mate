@@ -10,7 +10,7 @@ abstract class MiniGame {
     readonly gameOfHearts: boolean;
     readonly minChance?: number;
 
-    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance?: number) {
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance: number | undefined) {
         this.rank = rank;
         this.totalValue = totalValue;
         this.name = name;

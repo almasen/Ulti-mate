@@ -9,7 +9,7 @@ class Simple extends MiniGame {
     private trump: Suit | null = null;
 
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
-        super(rank, totalValue, name, gameOfHearts);
+        super(rank, totalValue, name, gameOfHearts, undefined);
     }
 
     meetsPrerequisites(hand: Hand): boolean {

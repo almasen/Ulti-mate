@@ -4,7 +4,7 @@ import { Card } from '../../classes/Card';
 
 class Durchmars extends MiniGame {
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance?: number) {
-        super(rank, totalValue, name, gameOfHearts);
+        super(rank, totalValue, name, gameOfHearts, minChance);
     }
 
     meetsPrerequisites(hand: Hand): boolean {
