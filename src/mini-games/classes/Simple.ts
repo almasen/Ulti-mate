@@ -3,6 +3,7 @@ import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Suit } from '../../classes/Suit';
 import { Card } from '../../classes/Card';
+import {SUITS} from '../../globals';
 
 class Simple extends MiniGame {
     private trump: Suit | null = null;
@@ -144,7 +145,7 @@ class Simple extends MiniGame {
             return 0;
         }
 
-        this.trump = this.chooseTrumpSuit(hand);
+        this.trump = this.gameOfHearts ? SUITS[0] : this.chooseTrumpSuit(hand);
 
         const trickCount = this.calculateTrickCount(hand);
         const opponentTrickCount = 8 - trickCount;

@@ -8,6 +8,7 @@ import { MiniGame } from './classes/MiniGame';
 // TODO: params from global ruleset
 const supportedMiniGames: MiniGame[] = [
     new Simple(1, 1, 'Simple', false),
+    new Simple(2, 2, 'Simple of Hearts', true),
     new Betli(6, 5, 'Betli'),
     new Durchmarsch(7, 6, 'Durchmarsch', false),
 ];
