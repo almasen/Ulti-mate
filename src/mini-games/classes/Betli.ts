@@ -5,8 +5,8 @@ import { Card } from '../../classes/Card';
 class Betli extends MiniGame {
     private startingCard: Card | null = null;
 
-    constructor() {
-        super(6, 5, 'betli');
+    constructor(rank: number, totalValue: number, name: string) {
+        super(rank, totalValue, name, false);
     }
 
     meetsPrerequisites(hand: Hand): boolean {

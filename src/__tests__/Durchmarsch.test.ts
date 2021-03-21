@@ -8,7 +8,7 @@ declare global {
 }
 globalThis.MAX_RISK = 0.5;
 
-const durchmarsch = new Durchmarsch();
+const durchmarsch = new Durchmarsch(7, 6, 'Durchmarsch', false);
 
 test('invalid hand length should throw an appropriate error', () => {
     const hand = new Hand();

@@ -3,8 +3,8 @@ import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
 
 class Durchmarsch extends MiniGame {
-    constructor() {
-        super(7, 6, 'durchmarsch'); // TODO: move params to globals
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
+        super(rank, totalValue, name, gameOfHearts);
     }
 
     meetsPrerequisites(hand: Hand): boolean {

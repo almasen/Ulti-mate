@@ -7,8 +7,8 @@ import { Card } from '../../classes/Card';
 class Simple extends MiniGame {
     private trump: Suit | null = null;
 
-    constructor() {
-        super(1, 1, 'simple');
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
+        super(rank, totalValue, name, gameOfHearts);
     }
 
     meetsPrerequisites(hand: Hand): boolean {

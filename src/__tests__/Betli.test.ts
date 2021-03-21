@@ -8,7 +8,7 @@ declare global {
 }
 globalThis.MAX_RISK = 0.5;
 
-const betli = new Betli();
+const betli = new Betli(6, 5, 'Betli');
 
 test('invalid hand length should throw an appropriate error', () => {
     const hand = new Hand();

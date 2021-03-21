@@ -5,7 +5,12 @@ import { Betli } from './classes/Betli';
 import { Durchmarsch } from './classes/Durchmarsch';
 import { MiniGame } from './classes/MiniGame';
 
-const supportedMiniGames: MiniGame[] = [new Simple(), new Betli(), new Durchmarsch()];
+// TODO: params from global ruleset
+const supportedMiniGames: MiniGame[] = [
+    new Simple(1, 1, 'Simple', false),
+    new Betli(6, 5, 'Betli'),
+    new Durchmarsch(7, 6, 'Durchmarsch', false),
+];
 
 type handPotential = {
     expectedValue: number;

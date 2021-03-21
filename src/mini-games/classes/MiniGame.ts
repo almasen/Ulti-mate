@@ -7,11 +7,13 @@ abstract class MiniGame {
     readonly rank: number;
     readonly totalValue: number;
     readonly name: string;
+    readonly gameOfHearts: boolean;
 
-    constructor(rank: number, totalValue: number, name: string) {
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
         this.rank = rank;
         this.totalValue = totalValue;
         this.name = name;
+        this.gameOfHearts = gameOfHearts;
     }
 
     logChanceIfApplicable(hand: Hand, chance: number, trump?: Suit) {

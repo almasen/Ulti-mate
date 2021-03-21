@@ -9,7 +9,7 @@ declare global {
 }
 globalThis.MAX_RISK = 0.5;
 
-const betli = new Betli();
+const betli = new Betli(6, 5, 'Betli');
 
 test('betli remove worst ♥ A K O U X IX VIII VII ♦ K VII', () => {
     const hand = new Hand();

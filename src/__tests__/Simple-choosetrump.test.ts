@@ -8,7 +8,7 @@ declare global {
 }
 globalThis.MAX_RISK = 0.5;
 
-const simple = new Simple();
+const simple = new Simple(1, 1, 'Simple', false);
 
 test('simple check trump suit ♥ A K U ♦ A K U ♠ A K X ♣ VII', () => {
     const hand = new Hand();
