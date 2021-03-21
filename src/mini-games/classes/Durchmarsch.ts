@@ -3,7 +3,7 @@ import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
 
 class Durchmarsch extends MiniGame {
-    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance?: number) {
         super(rank, totalValue, name, gameOfHearts);
     }
 
