@@ -8,12 +8,14 @@ abstract class MiniGame {
     readonly totalValue: number;
     readonly name: string;
     readonly gameOfHearts: boolean;
+    readonly minChance?: number;
 
-    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
+    constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance?: number) {
         this.rank = rank;
         this.totalValue = totalValue;
         this.name = name;
         this.gameOfHearts = gameOfHearts;
+        this.minChance = minChance;
     }
 
     logChanceIfApplicable(hand: Hand, chance: number, trump?: Suit) {
@@ -67,7 +69,7 @@ abstract class MiniGame {
 
         this.logChanceIfApplicable(hand, chance);
 
-        return chance >= MAX_RISK ? chance : 0;
+        return chance >= Math.max(MAX_RISK, this.minChance ? this.minChance : 0) ? chance : 0;
     }
 
     calculateExpectedValue(hand: Hand): number {

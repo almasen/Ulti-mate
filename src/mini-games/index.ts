@@ -24,7 +24,7 @@ const calculateHandPotential = (hand: Hand): handPotential => {
     if (hand.logging) {
         console.log(`\nCalculating chances for supported minigames:`);
     }
-    supportedMiniGames.forEach(miniGame => {
+    supportedMiniGames.forEach((miniGame) => {
         const expectedMiniGameValue = miniGame.calculateExpectedValue(hand);
         const miniGameRank = miniGame.rank;
         if (
