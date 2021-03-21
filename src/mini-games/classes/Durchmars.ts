@@ -2,7 +2,7 @@ import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
 
-class Durchmarsch extends MiniGame {
+class Durchmars extends MiniGame {
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance?: number) {
         super(rank, totalValue, name, gameOfHearts);
     }
@@ -83,4 +83,4 @@ class Durchmarsch extends MiniGame {
     }
 }
 
-export { Durchmarsch };
+export { Durchmars };

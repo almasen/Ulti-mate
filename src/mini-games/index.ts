@@ -2,7 +2,7 @@
 import { Hand } from '../classes/Hand';
 import { Simple } from './classes/Simple';
 import { Betli } from './classes/Betli';
-import { Durchmarsch } from './classes/Durchmarsch';
+import { Durchmars } from './classes/Durchmars';
 import { MiniGame } from './classes/MiniGame';
 
 // TODO: params from global ruleset
@@ -10,11 +10,11 @@ const supportedMiniGames: MiniGame[] = [
     new Simple(1, 1, 'Simple', false),
     new Simple(2, 2, 'Simple of Hearts', true),
     new Betli(6, 5, 'Betli', 0.5),
-    new Durchmarsch(7, 6, 'Plain Durchmarsch', false, 0.5),
+    new Durchmars(7, 6, 'Plain Durchmars', false, 0.5),
     new Betli(15, 10, 'Rebetli', 0.75),
-    new Durchmarsch(19, 12, 'Plain Redurchmarsch', false, 0.75),
+    new Durchmars(19, 12, 'Plain Redurchmars', false, 0.75),
     new Betli(29, 20, 'Open Betli', 0.9),
-    new Durchmarsch(34, 24, 'Plain Open Durchmars', false, 0.9),
+    new Durchmars(34, 24, 'Plain Open Durchmars', false, 0.9),
 ];
 
 type handPotential = {
