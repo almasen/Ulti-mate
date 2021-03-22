@@ -19,7 +19,7 @@ abstract class MiniGame {
     }
 
     logChanceIfApplicable(hand: Hand, chance: number, trump?: Suit) {
-        if (hand.logging) {
+        if (hand.logging && (!this.minChance || this.minChance <= 0.5)) {
             let colour;
             switch (true) {
                 case chance === 1:
