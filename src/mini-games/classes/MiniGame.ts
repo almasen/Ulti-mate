@@ -10,6 +10,8 @@ abstract class MiniGame {
     readonly gameOfHearts: boolean;
     readonly minChance?: number;
 
+    protected trump: Suit | null = null;
+
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance: number | undefined) {
         this.rank = rank;
         this.totalValue = totalValue;
@@ -18,7 +20,7 @@ abstract class MiniGame {
         this.minChance = minChance;
     }
 
-    logChanceIfApplicable(hand: Hand, chance: number, trump?: Suit) {
+    logChanceIfApplicable(hand: Hand, chance: number) {
         if (hand.logging && (!this.minChance || this.minChance <= 0.5)) {
             let colour;
             switch (true) {
@@ -42,8 +44,8 @@ abstract class MiniGame {
                     colour = chalk.red;
                     break;
             }
-            trump
-                ? console.log(`${this.name} chance: ${colour(chance * 100)}% (${trump.symbol})`)
+            this.trump
+                ? console.log(`${this.name} chance: ${colour(chance * 100)}% (${this.trump.symbol})`)
                 : console.log(`${this.name} chance: ${colour(chance * 100)}%`);
         }
     }

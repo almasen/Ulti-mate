@@ -6,8 +6,6 @@ import { Card } from '../../classes/Card';
 import { SUITS } from '../../globals';
 
 class Simple extends MiniGame {
-    private trump: Suit | null = null;
-
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean) {
         super(rank, totalValue, name, gameOfHearts, undefined);
     }
