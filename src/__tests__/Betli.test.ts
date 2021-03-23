@@ -12,10 +12,10 @@ const betli = new Betli(6, 5, 'Betli');
 
 test('invalid hand length should throw an appropriate error', () => {
     const hand = new Hand();
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
         hand.addCard(CARD_MAP.get(i));
     }
     expect(() => {
-        betli.calculateExpectedValue(hand);
-    }).toThrow(new Error('Invalid hand length 11'));
+        hand.addCard(CARD_MAP.get(10));
+    }).toThrow(new Error('Invalid operation: Hand is already full.'));
 });

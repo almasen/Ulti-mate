@@ -12,12 +12,12 @@ const durchmars = new Durchmars(7, 6, 'Durchmars', false);
 
 test('invalid hand length should throw an appropriate error', () => {
     const hand = new Hand();
-    for (let i = 0; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
         hand.addCard(CARD_MAP.get(i));
     }
     expect(() => {
-        durchmars.calculateExpectedValue(hand);
-    }).toThrow(new Error('Invalid hand length 11'));
+        hand.addCard(CARD_MAP.get(10));
+    }).toThrow(new Error('Invalid operation: Hand is already full.'));
 });
 
 test('durchmars ♥ A K O U X IX VIII VII ♦ A K', () => {

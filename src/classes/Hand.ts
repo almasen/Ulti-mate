@@ -49,6 +49,10 @@ class Hand extends Array {
     logging: boolean = false; // TODO: private, getter
 
     addCard(card: Card) {
+        if (this.length === 10) {
+            throw new Error('Invalid operation: Hand is already full.');
+        }
+
         switch (card.suit.letter) {
             case 'H':
                 this.hearts.push(card);
@@ -132,7 +136,24 @@ class Hand extends Array {
             this.sortCardArrayToTrumpOrder(this.bellsTrumpOrder);
             this.sortCardArrayToTrumpOrder(this.leavesTrumpOrder);
             this.sortCardArrayToTrumpOrder(this.acornsTrumpOrder);
+            // prevent accidental modifications
+            this.finaliseProperties();
         }
+    }
+
+    private finaliseProperties() {
+        this.allSuits.forEach((e) => {
+            Object.freeze(e);
+        });
+        this.allRanks.forEach((e) => {
+            Object.freeze(e);
+        });
+        Object.freeze(this.trumpOrder);
+        Object.freeze(this.heartsTrumpOrder);
+        Object.freeze(this.bellsTrumpOrder);
+        Object.freeze(this.leavesTrumpOrder);
+        Object.freeze(this.acornsTrumpOrder);
+        Object.freeze(this.marriageSuits);
     }
 
     private sortCardArrayToTrumpOrder(arr: Card[]) {
