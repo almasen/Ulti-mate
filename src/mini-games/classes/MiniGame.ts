@@ -78,11 +78,9 @@ abstract class MiniGame {
         return this.calculateChance(hand) * this.totalValue;
     }
 
-
-    public getTrumpSuit() : Suit | null {
+    public getTrumpSuit(): Suit | null {
         return this.trump;
     }
-
 }
 
 export { MiniGame };

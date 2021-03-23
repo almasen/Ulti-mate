@@ -11,7 +11,10 @@ class Simple extends MiniGame {
     }
 
     meetsPrerequisites(hand: Hand): boolean {
-        return (!this.gameOfHearts || hand.getSuitHeurFromSuit(SUITS[0]) > 15) && (hand.aces.length > 0 || hand.tens.length > 0 || hand.marriageSuits.length > 0);
+        return (
+            (!this.gameOfHearts || hand.getSuitHeurFromSuit(SUITS[0]) > 15) &&
+            (hand.aces.length > 0 || hand.tens.length > 0 || hand.marriageSuits.length > 0)
+        );
     }
 
     chooseTrumpSuit(hand: Hand): Suit {
