@@ -44,7 +44,7 @@ const calculateHandPotential = (hand: Hand): handPotential => {
         }
     });
     if (hand.logging) {
-        console.log(`\nBest minigame to play is: ${bestMiniGame ? chalk.green(bestMiniGame.name) : chalk.red('none')}`);
+        console.log(`\nBest minigame to play is: ${bestMiniGame ? `${chalk.green(bestMiniGame.name)} ${bestMiniGame.getTrumpSuit() ? "(" + bestMiniGame.getTrumpSuit().symbol + ")" : ""}` : chalk.red('none')}`);
     }
     return {
         expectedValue: expectedHandValue,

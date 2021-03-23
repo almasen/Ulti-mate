@@ -77,6 +77,12 @@ abstract class MiniGame {
     calculateExpectedValue(hand: Hand): number {
         return this.calculateChance(hand) * this.totalValue;
     }
+
+
+    public getTrumpSuit() : Suit | null {
+        return this.trump;
+    }
+
 }
 
 export { MiniGame };
