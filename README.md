@@ -11,5 +11,7 @@ KCL 6CCS3PRJ - AI opponent for Ulti card game
 
 ## TODO:
 
-- 75% duri chance will print 75% 3 times
-- print out which minigame should by played and why
+- [x] 75% duri chance will print 75% 3 times
+- [x] print out which minigame should by played
+- [ ] print out reasoning for chances
+- [ ] implement having 12 cards in hand
