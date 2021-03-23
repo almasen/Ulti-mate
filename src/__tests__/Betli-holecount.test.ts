@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { Card } from '../classes/Card';
 import { Hand } from '../classes/Hand';
 import { DECK, CARD_MAP } from '../globals';
 import { Betli } from '../mini-games/classes/Betli';

@@ -1,4 +1,4 @@
-// // @ts-nocheck
+// @ts-nocheck
 import { Card } from '../classes/Card';
 import { SUITS, RANKS } from '../globals';
 

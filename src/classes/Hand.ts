@@ -80,7 +80,6 @@ class Hand extends Array {
 
             default:
                 throw new Error('Invalid suit in hand');
-                break;
         }
 
         switch (card.rank.letter) {
@@ -124,7 +123,6 @@ class Hand extends Array {
 
             default:
                 throw new Error('Invalid rank in hand');
-                break;
         }
 
         this.push(card);
@@ -158,7 +156,7 @@ class Hand extends Array {
 
     private sortCardArrayToTrumpOrder(arr: Card[]) {
         arr.sort((a: Card, b: Card) => {
-            return a.rank.heuristicValue - b.rank.heuristicValue;
+            return b.rank.heuristicValue - a.rank.heuristicValue;
         });
     }
 
