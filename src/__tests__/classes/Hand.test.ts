@@ -1,6 +1,6 @@
 // @ts-nocheck
-import { Hand } from '../classes/Hand';
-import { DECK, CARD_MAP, SUITS } from '../globals';
+import { Hand } from '../../classes/Hand';
+import { DECK, CARD_MAP, SUITS } from '../../globals';
 import { cloneDeep } from 'lodash';
 
 declare global {

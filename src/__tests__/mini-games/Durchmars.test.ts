@@ -1,7 +1,7 @@
 // @ts-nocheck
-import { Hand } from '../classes/Hand';
-import { DECK, CARD_MAP } from '../globals';
-import { Durchmars } from '../mini-games/classes/Durchmars';
+import { Hand } from '../../classes/Hand';
+import { DECK, CARD_MAP } from '../../globals';
+import { Durchmars } from '../../mini-games/classes/Durchmars';
 
 declare global {
     var MAX_RISK: number;

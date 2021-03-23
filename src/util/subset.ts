@@ -3,7 +3,7 @@
  * Courtesy of MennyMez @ StackOverflow.
  * @param array
  */
-const getAllSubsets = (array: any[]) => {
+const getAllSubsets = (array: any[]): any[] => {
     return array.reduce((subsets, value) => subsets.concat(subsets.map((set: any) => [value, ...set])), [[]]);
 };
 
