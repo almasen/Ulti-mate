@@ -3,6 +3,11 @@ import { Hand } from '../classes/Hand';
 import { sortHand } from './hand';
 import { getAllSubsets } from './subset';
 
+/**
+ * Durstenfeld shuffle an array.
+ * JS implementation courtesy of Laurens Holst @ StackOverflow.
+ * @param array
+ */
 const shuffle = (deck: Card[]) => {
     for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

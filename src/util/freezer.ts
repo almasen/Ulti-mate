@@ -1,3 +1,8 @@
+/**
+ * Freeze an ES6 map.
+ * Courtesy of Tieme @ StackOverflow.
+ * @param array
+ */
 const freezeMap = (map: Map<any, any>) => {
     if (map instanceof Map) {
         map.set = (key) => {
