@@ -7,7 +7,7 @@ test('map freezer blocks changes to map as expected', () => {
     freezeMap(map);
 
     expect(() => {
-        map.set(2,2);
+        map.set(2, 2);
     }).toThrow(new Error("Can't add property 2, map is not extensible"));
 
     expect(() => {
