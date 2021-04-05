@@ -1,6 +1,8 @@
 # 6CCS3PRJ
 KCL 6CCS3PRJ - AI opponent for Ulti card game
 
+[![Test Coverage](https://img.shields.io/badge/dynamic/json?color=success&label=test%20coverage&query=%24.total.statements.pct&suffix=%25&url=https%3A%2F%2Frepos.almasi.dev%2Fulti-bot%2Fcoverage%2Fcoverage-summary.json&logo=jest)](https://repos.almasi.dev/ulti-bot/coverage)
+
 ## CLI
 
 - `npm run build` to compile project
