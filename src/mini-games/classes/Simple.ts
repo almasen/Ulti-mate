@@ -28,28 +28,25 @@ class Simple extends MiniGame {
             }
         });
         // if multiple suits' length is 5 compare their heuristic value
-        if (halfHandSuits.length > 0) {
-            if (halfHandSuits.length > 1) {
-                let largestHeurSuits: Card[][] = [];
-                halfHandSuits.forEach((suit: Card[]) => {
-                    let suitHeuristicValue = suit.reduce((a, b) => a + b.rank.heuristicValue, 0);
-                    if (hand.marriageSuits.includes(suit[0].suit)) {
-                        suitHeuristicValue += 5;
+        if (halfHandSuits.length > 1) {
+            let largestHeurSuits: Card[][] = [];
+            halfHandSuits.forEach((suit: Card[]) => {
+                let suitHeuristicValue = suit.reduce((a, b) => a + b.rank.heuristicValue, 0);
+                if (hand.marriageSuits.includes(suit[0].suit)) {
+                    suitHeuristicValue += 5;
+                }
+                if (suitHeuristicValue >= largestHeurValue) {
+                    if (suitHeuristicValue > largestHeurValue) {
+                        largestHeurSuits = [];
+                        largestHeurValue = suitHeuristicValue;
                     }
-                    if (suitHeuristicValue >= largestHeurValue) {
-                        if (suitHeuristicValue > largestHeurValue) {
-                            largestHeurSuits = [];
-                            largestHeurValue = suitHeuristicValue;
-                        }
-                        largestHeurSuits.push(suit);
-                    }
-                });
-                halfHandSuits = [];
-                largestHeurSuits.length > 1
-                    ? halfHandSuits.push(largestHeurSuits[randomInt(0, 2)])
-                    : halfHandSuits.push(largestHeurSuits[0]);
-            }
-            return halfHandSuits[0][0].suit;
+                    largestHeurSuits.push(suit);
+                }
+            });
+            halfHandSuits = [];
+            largestHeurSuits.length > 1
+                ? halfHandSuits.push(largestHeurSuits[randomInt(0, 2)])
+                : halfHandSuits.push(largestHeurSuits[0]);
         }
         // otherwise calculate each suit's heur value accounting for marriages
         largestHeurValue = 0;
