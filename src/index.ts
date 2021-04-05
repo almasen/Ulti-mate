@@ -19,9 +19,7 @@ console.log(`expected rank of hand is: ${chalk.cyan(handPotential.bestMiniGame)}
 if (calculateOpponentHands) {
     console.log('\nCalculating opponent hands..');
 
-    console.time('calcOpponentHands');
     const possibleOpponentHands = calculateAndSortPossibleHands(possibleOpponentCards);
-    console.timeEnd('calcOpponentHands');
 
     let opponentHandPotentials = 0;
     let greaterRankCount = 0;
@@ -37,7 +35,6 @@ if (calculateOpponentHands) {
     });
     progressBar.start(possibleOpponentHands.length, 0);
 
-    console.time('calcOpponentChances');
     for (let i = 0; i < possibleOpponentHands.length; i++) {
         progressBar.update(i);
         const opponentHand: Card[] = possibleOpponentHands[i];
@@ -49,7 +46,6 @@ if (calculateOpponentHands) {
         }
     }
     progressBar.update(possibleOpponentHands.length);
-    console.timeEnd('calcOpponentChances');
 
     console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
     console.log(

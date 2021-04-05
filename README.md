@@ -15,3 +15,4 @@ KCL 6CCS3PRJ - AI opponent for Ulti card game
 - [x] print out which minigame should by played
 - [ ] print out reasoning for chances
 - [ ] implement having 12 cards in hand
+- [ ] e.g. print raw score for simple
