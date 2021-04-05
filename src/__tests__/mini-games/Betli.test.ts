@@ -48,4 +48,3 @@ test('betli ♥ A K O U X IX VIII VII ♦ VII ♠ VIII', () => {
     const expectedValue = betli.calculateExpectedValue(hand);
     expect(expectedValue).toBe(5);
 });
-
