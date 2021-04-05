@@ -18,3 +18,19 @@ test('map freezer blocks changes to map as expected', () => {
         map.clear();
     }).toThrow(new Error("Can't clear map, map is frozen"));
 });
+
+test('map freezer treats non-map objects as expected', () => {
+    const nonMap = {
+        1: "one",
+        a: "A",
+    };
+    freezeMap(nonMap);
+
+    expect(() => {
+        nonMap.a = "B";
+    }).toThrow(new Error("Cannot assign to read only property 'a' of object '#<Object>'"));
+
+    expect(() => {
+        nonMap.clear();
+    }).toThrow(new Error("nonMap.clear is not a function"));
+});
