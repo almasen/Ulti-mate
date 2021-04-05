@@ -138,7 +138,9 @@ class Simple extends MiniGame {
 
     calculateChanceDetails(hand: Hand): number {
         // set trump suit if applicable
-        this.trump = this.gameOfHearts ? SUITS[0] : this.chooseTrumpSuit(hand);
+        if (!this.gameOfHearts) {
+            this.trump = this.chooseTrumpSuit(hand);
+        }
 
         const trickCount = this.calculateTrickCount(hand);
         const opponentTrickCount = 8 - trickCount;

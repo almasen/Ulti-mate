@@ -2,6 +2,7 @@
 import chalk from 'chalk';
 import { Hand } from '../../classes/Hand';
 import { Suit } from '../../classes/Suit';
+import { SUITS } from '../../globals';
 
 abstract class MiniGame {
     readonly rank: number;
@@ -18,6 +19,9 @@ abstract class MiniGame {
         this.name = name;
         this.gameOfHearts = gameOfHearts;
         this.minChance = minChance;
+        if (this.gameOfHearts) {
+            this.trump = SUITS[0];
+        }
     }
 
     logChanceIfApplicable(hand: Hand, chance: number) {
@@ -32,7 +36,7 @@ abstract class MiniGame {
                     colour = chalk.greenBright;
                     break;
 
-                case chance >= MAX_RISK:
+                case chance >= 0.5:
                     colour = chalk.yellowBright;
                     break;
 
