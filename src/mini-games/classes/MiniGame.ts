@@ -67,14 +67,14 @@ abstract class MiniGame {
 
     logMetPrerequisitesIfApplicable() {
         if (this.logReasons) {
-            console.log(`${this.name} prerequisites ${chalk.green("✔")}`);
+            console.log(`prerequisites ${chalk.green("✔")}`);
         }
     }
 
 
     logUnmetPrerequisitesIfApplicable() {
         if (this.logReasons) {
-            console.log(`${this.name} has unmet prerequisites, capping chance at ${chalk.red(0)}`);
+            console.log(`prerequisites ${chalk.red("✘")}`);
         }
     }
 

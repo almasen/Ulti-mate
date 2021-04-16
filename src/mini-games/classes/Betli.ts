@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
 import { Card } from '../../classes/Card';
@@ -11,6 +12,30 @@ class Betli extends MiniGame {
 
     meetsPrerequisites(hand: Hand): boolean {
         return hand.aces.length < 3;
+    }
+
+    logStartingCardIfApplicable(card: Card) {
+        if (this.logReasons) {
+            console.log(`starting card is ${chalk.cyan(card.getFullName())}`);
+        }
+    }
+
+    logHoleCountIfApplicable(holeCount: number, suit: Card[]) {
+        if (this.logReasons) {
+            console.log(`${holeCount} holes in ${chalk.cyan(suit[0].suit.name)}`);
+        }
+    }
+
+    logSuitHoleOverflowIfApplicable() {
+        if (this.logReasons) {
+            console.log(`Too many single-suit holes, capping chance at ${chalk.red(0)}`)
+        }
+    }
+
+    logTotalsIfApplicable(holeCount: number, suitDeficiencies: number) {
+        if (this.logReasons) {
+            console.log(`${chalk.cyan(holeCount)} total holes, ${suitDeficiencies > 0 ? chalk.green(suitDeficiencies) : chalk.cyan(suitDeficiencies)} suit deficiencies`)
+        }
     }
 
     countHoles(suit: Card[]): number {
@@ -33,6 +58,7 @@ class Betli extends MiniGame {
                 --expected;
             }
         }
+        this.logHoleCountIfApplicable(holes, suit);
         return holes;
     }
 
@@ -75,6 +101,7 @@ class Betli extends MiniGame {
                 }
             }
         }
+        this.logStartingCardIfApplicable(worstCard);
         return worstCard;
     }
 
@@ -99,11 +126,13 @@ class Betli extends MiniGame {
             leavesHoles * 2 + leavesCount > 8 ||
             acornsHoles * 2 + acornsCount > 8
         ) {
+            this.logSuitHoleOverflowIfApplicable();
             return 0;
         }
 
         const totalHoles = heartsHoles + bellsHoles + leavesHoles + acornsHoles;
         const suitDeficiencies = hand.getSuitDeficiencies();
+        this.logTotalsIfApplicable(totalHoles, suitDeficiencies);
         return Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
     }
 }
