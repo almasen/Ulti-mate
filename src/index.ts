@@ -13,8 +13,8 @@ const possibleOpponentCards: Card[] = getPossibleOpponentCards();
 
 const handPotential = calculateHandPotential(hand);
 
-console.log(`expected value of hand is: ${chalk.cyan(handPotential.expectedValue)}`);
-console.log(`expected rank of hand is: ${chalk.cyan(handPotential.bestMiniGame)}`);
+console.log(`Expected value of hand is: ${chalk.cyan(handPotential.expectedValue)}`);
+console.log(`Expected rank of hand is: ${chalk.cyan(handPotential.bestMiniGame)}`);
 
 if (calculateOpponentHands) {
     console.log('\nCalculating opponent hands..');
@@ -47,9 +47,9 @@ if (calculateOpponentHands) {
     }
     progressBar.update(possibleOpponentHands.length);
 
-    console.log(`opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
+    console.log(`Opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
     console.log(
-        `expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
+        `Expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
     );
-    console.log(`greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
+    console.log(`Greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
 }

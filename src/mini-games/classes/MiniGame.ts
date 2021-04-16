@@ -50,13 +50,19 @@ abstract class MiniGame {
                     break;
             }
             this.trump
-                ? console.log(`${this.name} chance: ${colour(chance * 100)}% (${this.trump.symbol})`)
-                : console.log(`${this.name} chance: ${colour(chance * 100)}%`);
+                ? console.log(`${chalk.cyan(this.name)} chance: ${colour(chance * 100)}% (${this.trump.symbol})`)
+                : console.log(`${chalk.cyan(this.name)} chance: ${colour(chance * 100)}%`);
         }
     }
 
     setLogReasons(hand: Hand) {
         this.logReasons = hand.logging && LOG_REASONING && !this.name.includes('Re') && !this.name.includes('Open');
+    }
+
+    logReasoningIfApplicable() {
+        if (this.logReasons) {
+            console.log(`\nCalculating ${chalk.cyan(this.name)} chance...`);
+        }
     }
 
     validateHand(hand: Hand) {
@@ -71,6 +77,8 @@ abstract class MiniGame {
 
     calculateChance(hand: Hand): number {
         this.validateHand(hand);
+        this.setLogReasons(hand);
+        this.logReasoningIfApplicable();
         if (!this.meetsPrerequisites(hand)) {
             this.logChanceIfApplicable(hand, 0);
             return 0;
@@ -84,7 +92,6 @@ abstract class MiniGame {
     }
 
     calculateExpectedValue(hand: Hand): number {
-        this.setLogReasons(hand);
         return this.calculateChance(hand) * this.totalValue;
     }
 
