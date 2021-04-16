@@ -55,6 +55,12 @@ abstract class MiniGame {
         return this.trump;
     }
 
+    validateHand(hand: Hand) {
+        if (hand.length !== 10) {
+            throw new Error(`Invalid hand length ${hand.length}`);
+        }
+    }
+
     // == log calculated chances if applicable == //
 
     logChanceIfApplicable(hand: Hand, chance: number) {
@@ -108,12 +114,6 @@ abstract class MiniGame {
     logUnmetPrerequisitesIfApplicable() {
         if (this.logReasons) {
             console.log(`prerequisites ${chalk.red('✘')}`);
-        }
-    }
-
-    validateHand(hand: Hand) {
-        if (hand.length !== 10) {
-            throw new Error(`Invalid hand length ${hand.length}`);
         }
     }
 }

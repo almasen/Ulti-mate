@@ -1,6 +1,6 @@
 {
-    "name": "ulti-bot",
-    "version": "0.1.1",
+    "name": "ulti-mate",
+    "version": "1.0.0",
     "description": "AI opponent for the card game Ulti",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
