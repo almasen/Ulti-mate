@@ -13,6 +13,8 @@ abstract class MiniGame {
 
     protected trump: Suit | null = null;
 
+    private logReasons: boolean = false;
+
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance: number | undefined) {
         this.rank = rank;
         this.totalValue = totalValue;
@@ -54,6 +56,10 @@ abstract class MiniGame {
         }
     }
 
+    setLogReasons(hand: Hand) {
+        this.logReasons = hand.logging;
+    }
+
     validateHand(hand: Hand) {
         if (hand.length !== 10) {
             throw new Error(`Invalid hand length ${hand.length}`);
@@ -79,6 +85,7 @@ abstract class MiniGame {
     }
 
     calculateExpectedValue(hand: Hand): number {
+        this.setLogReasons(hand);
         return this.calculateChance(hand) * this.totalValue;
     }
 
