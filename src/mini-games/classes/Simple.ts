@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import chalk from 'chalk';
 import { randomInt } from 'crypto';
 import { MiniGame } from './MiniGame';
@@ -36,7 +37,13 @@ class Simple extends MiniGame {
     }
 
     logMarriageCount(hand: Hand) {
-        console.log(`${hand.marriageSuits.length > 0 ? chalk.green(hand.marriageSuits.length) : chalk.cyan(hand.marriageSuits.length)} marriages in hand`);
+        console.log(
+            `${
+                hand.marriageSuits.length > 0
+                    ? chalk.green(hand.marriageSuits.length)
+                    : chalk.cyan(hand.marriageSuits.length)
+            } marriages in hand`,
+        );
     }
 
     logExpectedScore(count: number) {

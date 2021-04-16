@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import chalk from 'chalk';
 import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
@@ -20,7 +21,11 @@ class Durchmars extends MiniGame {
 
     logHoleIfApplicable(suit: Card[], hole: string, chance: number, reason?: string) {
         if (this.logReasons) {
-            console.log(`${chalk.yellow(hole)} hole found in ${chalk.cyan(suit[0].suit.name)} ${reason ? `${reason} ` : ''}=> multiplying chance by ${chance === 1 ? chalk.green(chance) : chalk.yellow(chance)}`);
+            console.log(
+                `${chalk.yellow(hole)} hole found in ${chalk.cyan(suit[0].suit.name)} ${
+                    reason ? `${reason} ` : ''
+                }=> multiplying chance by ${chance === 1 ? chalk.green(chance) : chalk.yellow(chance)}`,
+            );
         }
     }
 

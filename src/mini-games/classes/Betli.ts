@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import chalk from 'chalk';
 import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
@@ -28,13 +29,17 @@ class Betli extends MiniGame {
 
     logSuitHoleOverflowIfApplicable() {
         if (this.logReasons) {
-            console.log(`Too many single-suit holes, capping chance at ${chalk.red(0)}`)
+            console.log(`Too many single-suit holes, capping chance at ${chalk.red(0)}`);
         }
     }
 
     logTotalsIfApplicable(holeCount: number, suitDeficiencies: number) {
         if (this.logReasons) {
-            console.log(`${chalk.cyan(holeCount)} total holes, ${suitDeficiencies > 0 ? chalk.green(suitDeficiencies) : chalk.cyan(suitDeficiencies)} suit deficiencies`)
+            console.log(
+                `${chalk.cyan(holeCount)} total holes, ${
+                    suitDeficiencies > 0 ? chalk.green(suitDeficiencies) : chalk.cyan(suitDeficiencies)
+                } suit deficiencies`,
+            );
         }
     }
 

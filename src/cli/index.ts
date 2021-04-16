@@ -12,7 +12,7 @@ program
     .addOption(new Option('-R, --max-risk <percentage>', 'Specify maximum risk in percentages').default(50, '50%'))
     .option('-H, --custom-hand <ids...>', 'Specify a custom hand via card IDs')
     .option('--no-opponents', "Skip calculation of opponents' hands")
-    .option('--no-reasoning', "Skip printing detailed reasoning for decisions");
+    .option('--no-reasoning', 'Skip printing detailed reasoning for decisions');
 
 program.parse(process.argv);
 const options = program.opts();
