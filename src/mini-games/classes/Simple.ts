@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { randomInt } from 'crypto';
 import { MiniGame } from './MiniGame';
 import { Hand } from '../../classes/Hand';
@@ -15,6 +16,31 @@ class Simple extends MiniGame {
             (!this.gameOfHearts || hand.getSuitHeurFromSuit(SUITS[0]) > 15) &&
             (hand.aces.length > 0 || hand.tens.length > 0 || hand.marriageSuits.length > 0)
         );
+    }
+
+    logResultsIfApplicable(trickCount: number, opponentTricks: number, hand: Hand, score: number) {
+        if (this.logReasons) {
+            this.logTrickCount(trickCount);
+            this.logOpponentTrickCount(opponentTricks);
+            this.logMarriageCount(hand);
+            this.logExpectedScore(score);
+        }
+    }
+
+    logTrickCount(count: number) {
+        console.log(`${chalk.cyan(count)} expected in game tricks`);
+    }
+
+    logOpponentTrickCount(count: number) {
+        console.log(`${chalk.cyan(count)} expected opponent tricks`);
+    }
+
+    logMarriageCount(hand: Hand) {
+        console.log(`${hand.marriageSuits.length > 0 ? chalk.green(hand.marriageSuits.length) : chalk.cyan(hand.marriageSuits.length)} marriages in hand`);
+    }
+
+    logExpectedScore(count: number) {
+        console.log(`expected total: ${count > 4 ? chalk.green(count) : chalk.yellow(count)}`);
     }
 
     chooseTrumpSuit(hand: Hand): Suit {
@@ -146,6 +172,8 @@ class Simple extends MiniGame {
         const opponentTrickCount = 8 - trickCount;
 
         const expectedScore = trickCount + this.calculateMarriageScore(hand) + this.calculateLastTrickScore(hand);
+
+        this.logResultsIfApplicable(trickCount, opponentTrickCount, hand, expectedScore);
 
         return expectedScore > opponentTrickCount ? 1 : 0;
     }
