@@ -12,8 +12,7 @@ abstract class MiniGame {
     readonly minChance?: number;
 
     protected trump: Suit | null = null;
-
-    private logReasons: boolean = false;
+    protected logReasons: boolean = false;
 
     constructor(rank: number, totalValue: number, name: string, gameOfHearts: boolean, minChance: number | undefined) {
         this.rank = rank;
@@ -57,7 +56,7 @@ abstract class MiniGame {
     }
 
     setLogReasons(hand: Hand) {
-        this.logReasons = hand.logging;
+        this.logReasons = hand.logging && !this.name.includes('Re') && !this.name.includes('Open');
     }
 
     validateHand(hand: Hand) {
