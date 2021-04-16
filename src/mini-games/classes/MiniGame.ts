@@ -65,6 +65,19 @@ abstract class MiniGame {
         }
     }
 
+    logMetPrerequisitesIfApplicable() {
+        if (this.logReasons) {
+            console.log(`${this.name} prerequisites ${chalk.green("✔")}`);
+        }
+    }
+
+
+    logUnmetPrerequisitesIfApplicable() {
+        if (this.logReasons) {
+            console.log(`${this.name} has unmet prerequisites, capping chance at ${chalk.red(0)}`);
+        }
+    }
+
     validateHand(hand: Hand) {
         if (hand.length !== 10) {
             throw new Error(`Invalid hand length ${hand.length}`);
@@ -80,9 +93,11 @@ abstract class MiniGame {
         this.setLogReasons(hand);
         this.logReasoningIfApplicable();
         if (!this.meetsPrerequisites(hand)) {
+            this.logUnmetPrerequisitesIfApplicable();
             this.logChanceIfApplicable(hand, 0);
             return 0;
         }
+        this.logMetPrerequisitesIfApplicable();
 
         const chance = this.calculateChanceDetails(hand);
 
