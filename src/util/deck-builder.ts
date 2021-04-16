@@ -1,11 +1,6 @@
 import { Card } from '../classes/Card';
 
-const buildCardDeck = (
-    SUITS: any[],
-    RANKS: any[],
-    DECK: Card[],
-    CARD_MAP: { set: (arg0: number, arg1: Card) => void },
-) => {
+const buildCardDeck = (SUITS: any[], RANKS: any[], DECK: Card[], CARD_MAP: { set: (arg0: number, arg1: Card) => void }) => {
     let id = 0;
     SUITS.forEach((suit) => {
         RANKS.forEach((rank) => {

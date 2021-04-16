@@ -15,34 +15,6 @@ class Betli extends MiniGame {
         return hand.aces.length < 3;
     }
 
-    logStartingCardIfApplicable(card: Card) {
-        if (this.logReasons) {
-            console.log(`starting card is ${chalk.cyan(card.getFullName())}`);
-        }
-    }
-
-    logHoleCountIfApplicable(holeCount: number, suit: Card[]) {
-        if (this.logReasons) {
-            console.log(`${holeCount} holes in ${chalk.cyan(suit[0].suit.name)}`);
-        }
-    }
-
-    logSuitHoleOverflowIfApplicable() {
-        if (this.logReasons) {
-            console.log(`Too many single-suit holes, capping chance at ${chalk.red(0)}`);
-        }
-    }
-
-    logTotalsIfApplicable(holeCount: number, suitDeficiencies: number) {
-        if (this.logReasons) {
-            console.log(
-                `${chalk.cyan(holeCount)} total holes, ${
-                    suitDeficiencies > 0 ? chalk.green(suitDeficiencies) : chalk.cyan(suitDeficiencies)
-                } suit deficiencies`,
-            );
-        }
-    }
-
     countHoles(suit: Card[]): number {
         if (suit.length === 0) {
             return 0;
@@ -139,6 +111,36 @@ class Betli extends MiniGame {
         const suitDeficiencies = hand.getSuitDeficiencies();
         this.logTotalsIfApplicable(totalHoles, suitDeficiencies);
         return Math.min(1, 1 - 0.1 * totalHoles + 0.1 * suitDeficiencies);
+    }
+
+    // == log detailed reasoning if applicable == //
+
+    logStartingCardIfApplicable(card: Card) {
+        if (this.logReasons) {
+            console.log(`starting card is ${chalk.cyan(card.getFullName())}`);
+        }
+    }
+
+    logHoleCountIfApplicable(holeCount: number, suit: Card[]) {
+        if (this.logReasons) {
+            console.log(`${holeCount} holes in ${chalk.cyan(suit[0].suit.name)}`);
+        }
+    }
+
+    logSuitHoleOverflowIfApplicable() {
+        if (this.logReasons) {
+            console.log(`Too many single-suit holes, capping chance at ${chalk.red(0)}`);
+        }
+    }
+
+    logTotalsIfApplicable(holeCount: number, suitDeficiencies: number) {
+        if (this.logReasons) {
+            console.log(
+                `${chalk.cyan(holeCount)} total holes, ${
+                    suitDeficiencies > 0 ? chalk.green(suitDeficiencies) : chalk.cyan(suitDeficiencies)
+                } suit deficiencies`,
+            );
+        }
     }
 }
 

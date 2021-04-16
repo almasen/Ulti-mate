@@ -54,9 +54,7 @@ if (options.customHand) {
     options.customHand.forEach((e) => {
         const parsedValue = parseInt(e, 10);
         if (isNaN(parsedValue) || parsedValue > 31 || parsedValue < 0) {
-            throw new InvalidOptionArgumentError(
-                'Custom hand must be a list of 10 integers between 0 and 31 (inclusive).',
-            );
+            throw new InvalidOptionArgumentError('Custom hand must be a list of 10 integers between 0 and 31 (inclusive).');
         }
         customHand.push(parsedValue);
     });

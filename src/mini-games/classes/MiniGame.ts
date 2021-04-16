@@ -25,66 +25,6 @@ abstract class MiniGame {
         }
     }
 
-    logChanceIfApplicable(hand: Hand, chance: number) {
-        if (hand.logging && (!this.minChance || this.minChance <= 0.5)) {
-            let colour;
-            switch (true) {
-                case chance === 1:
-                    colour = chalk.green;
-                    break;
-
-                case chance >= 0.75:
-                    colour = chalk.greenBright;
-                    break;
-
-                case chance >= 0.5:
-                    colour = chalk.yellowBright;
-                    break;
-
-                case chance > 0:
-                    colour = chalk.yellow;
-                    break;
-
-                default:
-                    colour = chalk.red;
-                    break;
-            }
-            this.trump
-                ? console.log(
-                      `${chalk.cyan(this.name)} chance: ${colour(chance * 100)}% (${chalk.magenta(this.trump.symbol)})`,
-                  )
-                : console.log(`${chalk.cyan(this.name)} chance: ${colour(chance * 100)}%`);
-        }
-    }
-
-    setLogReasons(hand: Hand) {
-        this.logReasons = hand.logging && LOG_REASONING && !this.name.includes('Re') && !this.name.includes('Open');
-    }
-
-    logReasoningIfApplicable() {
-        if (this.logReasons) {
-            console.log(`\nCalculating ${chalk.cyan(this.name)} chance...`);
-        }
-    }
-
-    logMetPrerequisitesIfApplicable() {
-        if (this.logReasons) {
-            console.log(`prerequisites ${chalk.green('✔')}`);
-        }
-    }
-
-    logUnmetPrerequisitesIfApplicable() {
-        if (this.logReasons) {
-            console.log(`prerequisites ${chalk.red('✘')}`);
-        }
-    }
-
-    validateHand(hand: Hand) {
-        if (hand.length !== 10) {
-            throw new Error(`Invalid hand length ${hand.length}`);
-        }
-    }
-
     abstract meetsPrerequisites(hand: Hand): boolean;
 
     abstract calculateChanceDetails(hand: Hand): number;
@@ -113,6 +53,68 @@ abstract class MiniGame {
 
     public getTrumpSuit(): Suit | null {
         return this.trump;
+    }
+
+    // == log calculated chances if applicable == //
+
+    logChanceIfApplicable(hand: Hand, chance: number) {
+        if (hand.logging && (!this.minChance || this.minChance <= 0.5)) {
+            let colour;
+            switch (true) {
+                case chance === 1:
+                    colour = chalk.green;
+                    break;
+
+                case chance >= 0.75:
+                    colour = chalk.greenBright;
+                    break;
+
+                case chance >= 0.5:
+                    colour = chalk.yellowBright;
+                    break;
+
+                case chance > 0:
+                    colour = chalk.yellow;
+                    break;
+
+                default:
+                    colour = chalk.red;
+                    break;
+            }
+            this.trump
+                ? console.log(`${chalk.cyan(this.name)} chance: ${colour(chance * 100)}% (${this.trump.symbol})`)
+                : console.log(`${chalk.cyan(this.name)} chance: ${colour(chance * 100)}%`);
+        }
+    }
+
+    // == log detailed reasoning if applicable == //
+
+    setLogReasons(hand: Hand) {
+        this.logReasons = hand.logging && LOG_REASONING && !this.name.includes('Re') && !this.name.includes('Open');
+    }
+
+    logReasoningIfApplicable() {
+        if (this.logReasons) {
+            console.log(`\nCalculating ${chalk.cyan(this.name)} chance...`);
+        }
+    }
+
+    logMetPrerequisitesIfApplicable() {
+        if (this.logReasons) {
+            console.log(`prerequisites ${chalk.green('✔')}`);
+        }
+    }
+
+    logUnmetPrerequisitesIfApplicable() {
+        if (this.logReasons) {
+            console.log(`prerequisites ${chalk.red('✘')}`);
+        }
+    }
+
+    validateHand(hand: Hand) {
+        if (hand.length !== 10) {
+            throw new Error(`Invalid hand length ${hand.length}`);
+        }
     }
 }
 

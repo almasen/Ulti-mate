@@ -12,14 +12,14 @@
             "error",
             4,
             {
-                "SwitchCase": 1
+                "SwitchCase": 2
             }
         ],
-        "arrow-parens": 0,
+        "arrow-parens": 2,
         "max-len": [
             "error",
             {
-                "code": 120
+                "code": 128
             }
         ]
     }

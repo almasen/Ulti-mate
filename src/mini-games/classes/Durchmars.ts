@@ -13,22 +13,6 @@ class Durchmars extends MiniGame {
         return hand.aces.length >= 2;
     }
 
-    logNoHolesIfApplicable(suit: Card[]) {
-        if (this.logReasons) {
-            console.log(`${chalk.green('No')} holes found in ${chalk.cyan(suit[0].suit.name)}`);
-        }
-    }
-
-    logHoleIfApplicable(suit: Card[], hole: string, chance: number, reason?: string) {
-        if (this.logReasons) {
-            console.log(
-                `${chalk.yellow(hole)} hole found in ${chalk.cyan(suit[0].suit.name)} ${
-                    reason ? `${reason} ` : ''
-                }=> multiplying chance by ${chance === 1 ? chalk.green(chance) : chalk.yellow(chance)}`,
-            );
-        }
-    }
-
     checkHoles(suit: Card[]): number {
         if (suit.length === 0) {
             return 1;
@@ -111,6 +95,24 @@ class Durchmars extends MiniGame {
         chance *= this.checkHoles(hand.acorns);
 
         return chance;
+    }
+
+    // == log detailed reasoning if applicable == //
+
+    logNoHolesIfApplicable(suit: Card[]) {
+        if (this.logReasons) {
+            console.log(`${chalk.green('No')} holes found in ${chalk.cyan(suit[0].suit.name)}`);
+        }
+    }
+
+    logHoleIfApplicable(suit: Card[], hole: string, chance: number, reason?: string) {
+        if (this.logReasons) {
+            console.log(
+                `${chalk.yellow(hole)} hole found in ${chalk.cyan(suit[0].suit.name)} ${
+                    reason ? `${reason} ` : ''
+                }=> multiplying chance by ${chance === 1 ? chalk.green(chance) : chalk.yellow(chance)}`,
+            );
+        }
     }
 }
 

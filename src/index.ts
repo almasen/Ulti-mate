@@ -25,8 +25,7 @@ if (calculateOpponentHands) {
     let greaterRankCount = 0;
 
     const progressBar = new cliProgress.SingleBar({
-        format:
-            'Progress |' + chalk.cyanBright('{bar}') + '| {percentage}% || ETA: {eta}s || {value}/{total} Opponents',
+        format: 'Progress |' + chalk.cyanBright('{bar}') + '| {percentage}% || ETA: {eta}s || {value}/{total} Opponents',
         barCompleteChar: '\u2588',
         barIncompleteChar: '\u2591',
         hideCursor: true,
@@ -48,8 +47,6 @@ if (calculateOpponentHands) {
     progressBar.update(possibleOpponentHands.length);
 
     console.log(`Opponent hands total value: ${chalk.yellow(opponentHandPotentials)}`);
-    console.log(
-        `Expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`,
-    );
+    console.log(`Expected value of opponent hands is ${chalk.yellow(opponentHandPotentials / possibleOpponentHands.length)}`);
     console.log(`Greater ranking opponent hands are ${chalk.yellow(greaterRankCount)}/22C10`);
 }
