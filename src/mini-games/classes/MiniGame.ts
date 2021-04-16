@@ -56,7 +56,7 @@ abstract class MiniGame {
     }
 
     setLogReasons(hand: Hand) {
-        this.logReasons = hand.logging && !this.name.includes('Re') && !this.name.includes('Open');
+        this.logReasons = hand.logging && LOG_REASONING && !this.name.includes('Re') && !this.name.includes('Open');
     }
 
     validateHand(hand: Hand) {

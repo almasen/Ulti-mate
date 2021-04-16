@@ -11,7 +11,8 @@ const program = new Command();
 program
     .addOption(new Option('-R, --max-risk <percentage>', 'Specify maximum risk in percentages').default(50, '50%'))
     .option('-H, --custom-hand <ids...>', 'Specify a custom hand via card IDs')
-    .option('--no-opponents', "Skip calculation of opponents' hands");
+    .option('--no-opponents', "Skip calculation of opponents' hands")
+    .option('--no-reasoning', "Skip printing detailed reasoning for decisions");
 
 program.parse(process.argv);
 const options = program.opts();
@@ -20,6 +21,7 @@ const options = program.opts();
 
 declare global {
     var MAX_RISK: number;
+    var LOG_REASONING: boolean;
 }
 {
     const parsedValue = parseInt(options.maxRisk, 10);
@@ -33,6 +35,10 @@ declare global {
 /* set variable whether to calculate opponent hands */
 
 const calculateOpponentHands: boolean = options.opponents;
+
+/* set variable whether to log detailed reasoning for decisions */
+
+global.LOG_REASONING = options.reasoning;
 
 /* set up user and opponent hands according to params */
 
