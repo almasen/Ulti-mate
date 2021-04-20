@@ -123,7 +123,9 @@ class Betli extends MiniGame {
 
     logHoleCountIfApplicable(holeCount: number, suit: Card[]) {
         if (this.logReasons) {
-            console.log(`${holeCount > 0 ? chalk.yellow(holeCount) : chalk.green(holeCount)} holes in ${chalk.cyan(suit[0].suit.name)}`);
+            console.log(
+                `${holeCount > 0 ? chalk.yellow(holeCount) : chalk.green(holeCount)} holes in ${chalk.cyan(suit[0].suit.name)}`,
+            );
         }
     }
 

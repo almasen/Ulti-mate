@@ -6,7 +6,6 @@ import { Betli } from './classes/Betli';
 import { Durchmars } from './classes/Durchmars';
 import { MiniGame } from './classes/MiniGame';
 
-// TODO: params from global ruleset
 const supportedMiniGames: MiniGame[] = [
     new Simple(1, 1, 'Simple', false),
     new Simple(2, 2, 'Simple of Hearts', true),

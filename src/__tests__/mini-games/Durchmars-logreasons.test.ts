@@ -269,4 +269,3 @@ test('durchmars log reasons ♥ A K O X IX VIII VII ♦ A K O', () => {
     const expectedValue = durchmars.calculateChance(hand);
     expect(console.log.mock.calls.length).toBe(5);
 });
-

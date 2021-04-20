@@ -46,7 +46,7 @@ class Hand extends Array {
 
     private suitDeficiencies: number = -1;
 
-    logging: boolean = false; // TODO: private, getter
+    logging: boolean = false;
 
     addCard(card: Card) {
         if (this.length === 10) {
@@ -93,6 +93,7 @@ class Hand extends Array {
 
             case 'O':
                 this.overs.push(card);
+                // check for potential marriage
                 if (this.length > 0) {
                     const previousCard: Card = this[this.length - 1];
                     if (previousCard.rank.letter === 'K' && previousCard.suit.letter === card.suit.letter) {

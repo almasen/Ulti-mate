@@ -139,7 +139,6 @@ test('simple chance ♥ K O U X IX VIII VII ♦ A K O', () => {
     expect(chance).toBe(1);
 });
 
-
 test('simple chance ♥ IX VIII VII ♦ IX VIII VII ♠ IX VIII VII ♣ IX', () => {
     const hand = new Hand();
     hand.logging = true;
